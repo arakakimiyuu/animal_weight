@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
- 
-  
-  namespace :admin do
-    get 'homes/top'
-  end
+
   # 顧客用
   # URL /customers/sign_in ...
   devise_for :customers,skip: [:passwords], controllers: {
@@ -16,7 +12,7 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
-  
+
   scope module: :public do
     root to: 'homes#top'
     get 'homes/about'
@@ -27,14 +23,15 @@ Rails.application.routes.draw do
     get 'customers/mypage' => 'customers#show'
     get 'customers/check'
     patch 'customers/withdraw'
-    delete 'cart_items/destroy_all'
+    resource :favorites, only: [:create, :destroy]
+    resources:commment, only:[:create, :destroy]
   end
-  
+
   namespace :admin do
-    
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
+    get '/' => 'homes#top'
+    resources:customer, only:[:index, :show, :edit, :update]
+    resource :favorites, only: [:create, :destroy]
+    resources:commment, only:[:index, :destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
