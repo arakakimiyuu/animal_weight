@@ -1,2 +1,29 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<div class='container px-5 px-0'>
+  <div class="row pt-3">
+    <div class="col-md-12">
+    <h1 class="p-2">会員情報編集</h1>
+     <%= form_with model: @customer, url: customers_mypage_path do |f| %>
+      <table class="table">
+        <tbody>
+         <tr>
+          <div class="field">
+             <th><%= f.label :名前 %></th>
+             <th><%= f.text_field :name, class: "form-control", autofocus: true %></th>
+          </div>
+         </tr>
+         <tr>
+           <div class="field">
+             <th><%= f.label :メールアドレス %></th>
+             <th><%= f.text_field :email, class: "form-control", autofocus: true %></th>
+          </div>
+         </tr>
+         <tr>
+           <th><%= f.submit "編集内容を保存する", class: "btn btn-success" %></th>
+           <th><%= link_to "退会する", customers_check_path, class: "btn btn-danger" %></th>
+         </tr>
+        </tbody>
+      </table>
+     <% end %>
+    </div>
+  </div>
+</div>
