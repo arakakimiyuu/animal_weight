@@ -21,7 +21,9 @@ Rails.application.routes.draw do
     get 'customers/mypage/edit' => 'customers#edit'
     patch 'customers/mypage' => 'customers#update'
     get 'customers/mypage' => 'customers#show'
+    #顧客の退会確認画面
     get 'customers/check'
+    #顧客の退会処理(ステータスの更新)
     patch 'customers/withdraw'
     resource :favorites, only: [:create, :destroy]
     resources:commment, only:[:create, :destroy]

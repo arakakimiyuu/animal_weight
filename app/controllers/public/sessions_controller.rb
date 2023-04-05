@@ -18,7 +18,21 @@ class Public::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  # protected
+  protected
+  # 退会しているかを判断するメソッド
+  def reject_customer
+    #【処理内容1】 入力されたemailからアカウントを1件取得
+    @customer = Customer.find_by(name: params[:customer][:email])
+    if @customer
+      #【処理内容2】 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
+      if @customer.valid_password?(params[:customer][:password]) && (@customer.is_delete == false)
+        flash[:notice] = "退会済みです。再度ご登録をしてご利用ください"
+        redirect_to new_customer_session_path
+      else
+        flash[:notice] = "項目を入力してください"
+      end
+    end
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params

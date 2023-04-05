@@ -1,5 +1,7 @@
 class Public::CustomersController < ApplicationController
+  
   def show
+    @customer = current
   end
 
   def edit
