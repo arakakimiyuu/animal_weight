@@ -97,9 +97,9 @@ ActiveRecord::Schema.define(version: 2023_04_05_065328) do
     t.integer "customer_id", null: false
     t.integer "pet_id", null: false
     t.date "date", null: false
-    t.float "weight", null: false
+    t.string "weight", null: false
     t.string "feed", null: false
-    t.float "amount_food", null: false
+    t.string "amount_food", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
