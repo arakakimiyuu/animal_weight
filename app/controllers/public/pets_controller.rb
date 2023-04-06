@@ -13,7 +13,7 @@ class Public::PetsController < ApplicationController
     @pet = Pet.new(pet_params)
     @pet.customer_id = current_customer.id
     if @pet.save
-      redirect_to pets_path(@pet)
+      redirect_to pet_path(@pet)
       flash[:notice] = "新規登録確認しました。"
     else
       render:new
