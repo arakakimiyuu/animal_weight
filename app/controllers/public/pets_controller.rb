@@ -9,7 +9,9 @@ class Public::PetsController < ApplicationController
   end
 
   def create
+    #byebug
     @pet = Pet.new(pet_params)
+    @pet.customer_id = current_customer.id
     if @pet.save
       redirect_to pets_path(@pet)
       flash[:notice] = "新規登録確認しました。"

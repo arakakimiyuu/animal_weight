@@ -21,7 +21,7 @@
             <%= label :gender, "メス", {value: :false, style: "display: inline-block;"} %>
             </p>
             <%= f.label :性格 %>
-            <%= f.text_field :personality, class: "form-control", placeholder: "例) 活発" %>
+            <%= f.text_area :personality, class: "form-control", placeholder: "例) 活発" %>
             <div class="pt-3">
              <%= f.submit '新規登録', class: 'btn btn-success' %>
             </div>
