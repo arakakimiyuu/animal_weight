@@ -9,9 +9,9 @@ class Public::PetsController < ApplicationController
   end
 
   def create
-    @pet = Pet.find(pet_params)
+    @pet = Pet.new(pet_params)
     if @pet.save
-      redirect_to pet_path
+      redirect_to pet_path(@pet)
       flash[:notice] = "新規登録確認しました。"
     else
       render:new
@@ -29,7 +29,7 @@ class Public::PetsController < ApplicationController
   def update
     @pet = Pet.find(params[:id])
     if @pet.update(pet_params)
-      redirect_to pet_path
+      redirect_to pet_path(@pet.id)
       flash[:notice] = "変更を保存しました。"
     else
       render:edit

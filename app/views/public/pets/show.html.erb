@@ -1,0 +1,49 @@
+<div class='container px-5 px-sm-0'>
+ <div style="color:limegreen;">
+    <%= flash[:notice] %>
+  </div>
+  <h4 class="pt-3">ペット登録詳細</h4>
+  <div class='row'>
+    <div class="col-5 d-flex justify-content-center">
+     <%= image_tag @pet.get_image(60, 60) %>
+    </div>
+    <div class='col-7'>
+     <table class="table">
+      <tr>
+       <td>ペット名</td>
+       <td><%= @pet.pet_name %></td>
+      </tr>
+      <tr>
+       <td>動物の種類</td>
+       <td><%= @pet.pet_type %></td>
+      </tr>
+      <tr>
+       <td>動物の品種</td>
+       <td><%= @pet.pet_kind %></td>
+      </tr>
+      <tr>
+       <td>体色</td>
+       <td><%= @pet.color %></td>
+      </tr>
+      <tr>
+       <td>性別</td>
+       <td>
+        <% if @pet.gender == true %>
+         <div style="color:limegreen;">オス</div>
+        <% else %>
+         <div>メス</div>
+        <% end %>
+       </td>
+      </tr>
+      <tr>
+        <td>性格</td>
+        <td><%= @pet.personality %></td>
+      </tr>
+      <tr>
+        <%= link_to "編集する", edit_pet_path, class: "btn btn-success" %>
+        <%= link_to "削除する", pet_path(@pet.id),  data: { confirm: "本当に消しますか？" }, method: :delete, class: "btn btn-sm btn-danger" %>
+      </tr>
+     </table>
+    </div>
+   </div>
+ </div>

@@ -3,7 +3,7 @@
     <div class="col-md-6 offset-md-3">
       <h2>ペット新規登録</h2>
         <%= form_with model: @pet, url: pets_path, method: :post, local: true do |f| %>
-            <%= f.label :商品画像 %>
+            <%= f.label :動物画像 %>
             <%= f.file_field :image, placeholder: "ファイルを選択", accept: "image/*" %><br>
             <%= f.label :ペット名 %>
             <%= f.text_field :pet_name, class: "form-control", placeholder: "例) ペット名" %>
