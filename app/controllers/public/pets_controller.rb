@@ -5,7 +5,7 @@ class Public::PetsController < ApplicationController
   end
 
   def index
-    @pets = Pet.all.page(params[:page]).per(5)
+    @pets = Pet.all.page(params[:page]).per(1)
   end
 
   def create

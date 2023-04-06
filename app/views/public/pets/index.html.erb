@@ -1,2 +1,45 @@
-<h1>Public::Pets#index</h1>
-<p>Find me in app/views/public/pets/index.html.erb</p>
+<div class='container px-5 px-sm-0'>
+ <div style="color:limegreen;">
+    <%= flash[:notice] %>
+  </div>
+ <h4 class="pt-3">ペット登録一覧</h4>
+ <div class='row'>
+  <div class='col-md-12'>
+   <div class="d-flex justify-content-end">
+    <%= link_to new_pet_path do %>
+     <i class="fas fa-plus-circle"></i>
+    <% end %>
+   </div>
+   <table class="table">
+    <thead>
+     <tr>
+      <th>ペットID</th>
+      <th>ペット名</th>
+      <th>動物の種類</th>
+      <th>動物の品種</th>
+      <th>性別</th>
+      <th colspan="6"></th>
+     </tr>
+    </thead>
+    <tbody>
+      <% @pets.each do |pet| %>
+        <tr>
+         <td><%= pet.id %></td>
+         <td><%= link_to pet.pet_name, pet_path(pet.id) %></td>
+         <td><%= pet.pet_type %></td>
+         <td><%= pet.pet_kind %></td>
+         <% if pet.gender == true %>
+          <td style="color:limegreen;">オス</td>
+          <% else %>
+          <td>メス</td>
+         <% end %>
+         </tr>
+      <% end %>
+    </tbody>
+   </table>
+  </div>
+ </div>
+</div>
+<div class="d-flex justify-content-center">
+ <%= paginate @pets %>
+</div>
