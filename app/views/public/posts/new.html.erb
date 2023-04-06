@@ -3,10 +3,8 @@
     <div class="col-md-6 offset-md-3">
       <h2>投稿新規登録</h2>
         <%= form_with model: @post, url: posts_path, method: :post, local: true do |f| %>
-            <%= f.label :ペット名 %>
-            <%= f.text_field :pet_name, class: "form-control", placeholder: "例) ペット名" %>
             <%= f.label :動物の種類 %>
-            <%= f.text_field :pet_type, class: "form-control", placeholder: "例) 犬" %>
+            <%= f.collection_select  %>
             <%= f.label :動物の品類 %>
             <%= f.text_field :pet_kind, class: "form-control", placeholder: "例) トイプードル" %>
             <%= f.label :体色 %>

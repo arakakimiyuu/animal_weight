@@ -45,6 +45,6 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:date, :weight, :feed, :amount_food)
+    params.require(:post).permit(:date, :weight, :feed, :amount_food, :customer_id, :pet_id)
   end
 end
