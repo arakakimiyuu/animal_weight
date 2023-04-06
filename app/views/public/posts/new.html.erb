@@ -1,2 +1,22 @@
-<h1>Public::Posts#new</h1>
-<p>Find me in app/views/public/posts/new.html.erb</p>
+<div class='container px-5 px-0'>
+  <div class="row pt-5">
+    <div class="col-md-6 offset-md-3">
+      <h2>投稿新規登録</h2>
+        <%= form_with model: @post, url: posts_path, method: :post, local: true do |f| %>
+            <%= f.label :ペット名 %>
+            <%= f.text_field :pet_name, class: "form-control", placeholder: "例) ペット名" %>
+            <%= f.label :動物の種類 %>
+            <%= f.text_field :pet_type, class: "form-control", placeholder: "例) 犬" %>
+            <%= f.label :動物の品類 %>
+            <%= f.text_field :pet_kind, class: "form-control", placeholder: "例) トイプードル" %>
+            <%= f.label :体色 %>
+            <%= f.text_field :color, class: "form-control", placeholder: "例) 白" %>
+            <%= f.label :性格 %>
+            <%= f.text_field :personality, class: "form-control", placeholder: "例) 活発" %>
+            <div class="pt-3">
+             <%= f.submit '新規登録', class: 'btn btn-success' %>
+            </div>
+        <% end %>
+    </div>
+  </div>
+</div>
