@@ -6,9 +6,11 @@
  <div class='row'>
   <div class='col-md-12'>
    <div class="d-flex justify-content-end">
+    新規投稿は
     <%= link_to new_pet_path do %>
-     <i class="fas fa-plus-circle"></i>
+     こちら
     <% end %>
+    から
    </div>
    <table class="table">
     <thead>
@@ -29,7 +31,7 @@
          <td><%= pet.pet_type %></td>
          <td><%= pet.pet_kind %></td>
          <% if pet.gender == true %>
-          <td style="color:limegreen;">オス</td>
+          <td>オス</td>
           <% else %>
           <td>メス</td>
          <% end %>

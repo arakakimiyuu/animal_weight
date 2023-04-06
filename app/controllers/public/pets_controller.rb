@@ -5,11 +5,10 @@ class Public::PetsController < ApplicationController
   end
 
   def index
-    @pets = Pet.all.page(params[:page]).per(1)
+    @pets = Pet.all.page(params[:page]).per(5)
   end
 
   def create
-    #byebug
     @pet = Pet.new(pet_params)
     @pet.customer_id = current_customer.id
     if @pet.save

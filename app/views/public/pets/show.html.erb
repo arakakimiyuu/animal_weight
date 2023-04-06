@@ -4,10 +4,10 @@
   </div>
   <h4 class="pt-3">ペット登録詳細</h4>
   <div class='row'>
-    <div class="col-5 d-flex justify-content-center">
+    <div class="col-4 d-flex justify-content-center">
      <%= image_tag @pet.get_profile_image(60, 60) %>
     </div>
-    <div class='col-7'>
+    <div class='col-5 offset-md-1'>
      <table class="table">
       <tr>
        <td>ペット名</td>
@@ -29,7 +29,7 @@
        <td>性別</td>
        <td>
         <% if @pet.gender == true %>
-         <div style="color:limegreen;">オス</div>
+         <div>オス</div>
         <% else %>
          <div>メス</div>
         <% end %>
@@ -39,11 +39,13 @@
         <td>性格</td>
         <td><%= @pet.personality %></td>
       </tr>
-      <tr>
-        <%= link_to "編集する", edit_pet_path, class: "btn btn-success" %>
-        <%= link_to "削除する", pet_path(@pet.id),  data: { confirm: "本当に消しますか？" }, method: :delete, class: "btn btn-sm btn-danger" %>
-      </tr>
      </table>
+     <div class="d-flex justify-content-center">
+       <%= link_to "編集する", edit_pet_path, class: "btn btn-success" %>
+     </div>
+     <span class="pl-5 pb-2">
+       <%= link_to "削除する", pet_path(@pet.id),  data: { confirm: "本当に消しますか？" }, method: :delete, class: "btn btn-sm btn-danger" %>
+     </span>
     </div>
    </div>
  </div>
