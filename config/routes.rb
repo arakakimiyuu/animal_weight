@@ -17,7 +17,10 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'homes/about'
     resources:pets, only: [:new, :index, :create, :show, :edit, :update, :destroy]
-    resources:posts, only: [:new, :index, :create, :show, :edit, :update, :destroy]
+    resources:posts, only: [:new, :index, :create, :show, :edit, :update, :destroy] do
+     resource :favorites, only: [:create, :destroy]
+     resources:commment, only:[:create, :destroy]
+    end
     get 'customers/mypage/edit' => 'customers#edit'
     patch 'customers/mypage' => 'customers#update'
     get 'customers/mypage' => 'customers#show'
@@ -25,8 +28,6 @@ Rails.application.routes.draw do
     get 'customers/check'
     #顧客の退会処理(ステータスの更新)
     patch 'customers/withdraw'
-    resource :favorites, only: [:create, :destroy]
-    resources:commment, only:[:create, :destroy]
   end
 
   namespace :admin do
