@@ -41,6 +41,7 @@ class Public::PetsController < ApplicationController
     @pet = Pet.find(params[:id])
     @pet.destroy
     redirect_to pets_path
+    flash[:notice] = "削除に成功しました。"
   end
 
   private

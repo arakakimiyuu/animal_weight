@@ -4,18 +4,21 @@ class Public::PostsController < ApplicationController
     @post = Post.new
   end
 
+  def index
+    @posts = Post.all.page(params[:page]).per(2)
+    #@pets = Pet.all
+  end
+
   def create
     @post = Post.new(post_params)
+    @post.customer_id = current_customer.id
+
     if @post.save
-       redirect_to posts_path(@post)
+       redirect_to post_path(@post)
        flash[:notice] = "新規投稿確認しました。"
     else
       render:new
     end
-  end
-
-  def index
-    @posts = Post.all
   end
 
   def show
@@ -40,6 +43,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     redirect_to posts_path
+    flash[:notice] = "削除に成功しました。"
   end
 
   private
