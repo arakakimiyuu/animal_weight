@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 2023_04_05_065328) do
     t.string "pet_type", null: false
     t.string "pet_kind", null: false
     t.boolean "gender", default: false, null: false
+    t.date "birth_date", null: false
     t.string "color", null: false
     t.text "personality", null: false
     t.datetime "created_at", precision: 6, null: false
