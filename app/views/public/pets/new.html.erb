@@ -14,12 +14,15 @@
             <%= f.label :体色 %>
             <%= f.text_field :color, class: "form-control", placeholder: "例) 白" %>
             <%= f.label :生年月日 %><br>
-            <%= f.date_select :birth_date, use_month_numbers: true,start_year: 1930, end_year: (Time.now.year - 0), default: Date.new(2001, 1, 1) %><br>
+            <%#= f.date_select :birth_date, use_month_numbers: true,start_year: 1930,
+                end_year: (Time.now.year - 0),default: Date.new(2001, 1, 1)  %>
             <%= f.label :性別 %><br>
-            <%= f.radio_button :gender, :true %>
-            <%= label :gender, "オス", {value: :true, style: "display: inline-block;"} %>
+            <%= f.radio_button :gender, 0 %>
+            <%= label :gender, "オス", {value: 0, style: "display: inline-block;"} %>
             <%= f.radio_button :gender, false %>
-            <%= label :gender, "メス", {value: :false, style: "display: inline-block;"} %><br>
+            <%= label :gender, "メス", {value: :false, style: "display: inline-block;"} %>
+            <%= f.radio_button :gender, 1 %>
+            <%= label :gender, "不明", {value: 1, style: "display: inline-block;"} %><br>
             <%= f.label :性格 %>
             <%= f.text_area :personality, class: "form-control", placeholder: "例) 活発" %>
             <div class="pt-3">

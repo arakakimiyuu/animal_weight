@@ -29,11 +29,13 @@
          <td><%= pet.id %></td>
          <td><%= link_to pet.pet_name, pet_path(pet.id) %></td>
          <td><%= pet.pet_type %></td>
-         <td><%= pet.birth_date %></td>
+         <td><%#= pet.birth_date %></td>
          <% if pet.gender == true %>
           <td>オス</td>
-          <% else %>
+          <% elsif %>
           <td>メス</td>
+          <% end %>
+          <td>不明</td>
          <% end %>
          </tr>
       <% end %>
