@@ -24,6 +24,19 @@
          <td><%= post.date %></td>
          <td><%= link_to post.pet.pet_type, post_path(post.id) %></td>
          <td><%= post.weight %></td>
+         <td>
+          <% if post.favorited_by?(current_customer) %>
+            <%= link_to favorites_path(post.id), method: :delete, remote: true do %>
+             <span style="color:red;">❤︎</span>
+             <%= post.favorites.count %>いいね
+            <% end %>
+           <% else %>
+            <%= link_to favorites_path(post.id), method: :post, remote: true do %>
+             <span style="color:blue;">❤︎</span>
+             <%= post.favorites.count %>いいね
+            <% end %>
+          <% end %>
+         </td>
         </tr>
       <% end %>
     </tbody>

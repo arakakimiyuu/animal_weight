@@ -23,6 +23,21 @@
        <td>フード量</td>
        <td><%= @post.amount_food %></td>
       </tr>
+      <tr>
+       <td>
+          <% if @post.favorited_by?(current_customer) %>
+            <%= link_to favorites_path(@post.id), method: :delete, remote: true do %>
+             <span style="color:red;">❤︎</span>
+             <%= @post.favorites.count %>いいね
+            <% end %>
+           <% else %>
+            <%= link_to favorites_path(@post.id), method: :post, remote: true do %>
+             <span style="color:blue;">❤︎</span>
+             <%= @post.favorites.count %>いいね
+            <% end %>
+          <% end %>
+       </td>
+      </tr>
      </table>
      <div class="d-flex justify-content-center">
        <%= link_to "編集する", edit_post_path, class: "btn btn-success" %>
