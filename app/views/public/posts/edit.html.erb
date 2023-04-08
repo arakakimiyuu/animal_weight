@@ -1,9 +1,9 @@
 <div class='container px-5 px-0'>
   <div class="row pt-5">
-    
+
     <div class="col-md-4 offset-md-4">
       <h2>投稿編集</h2>
-        <%= form_with model: @post, url: posts_path, method: :post, local: true do |f| %>
+        <%= form_with model: @post, url: post_path(@post), method: :patch, local: true do |f| %>
             <%= f.label :動物の種類 %>
             <%= f.collection_select :pet_id, Pet.all, :id, :pet_type, { include_blank: '選択してください'}, { class: 'form-control'} %><br>
             <diV class="form-group">

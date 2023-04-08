@@ -40,13 +40,15 @@
         <td>性格</td>
         <td><%= @pet.personality %></td>
       </tr>
+      <tr>
+         <td class="d-flex justify-content-center">
+          <%= link_to "編集する", edit_pet_path, class: "btn btn-success" %>
+        </td>
+         <td>
+         <%= link_to "削除する", pet_path(@pet.id),  data: { confirm: "本当に消しますか？" }, method: :delete, class: "btn btn-danger" %>
+        </td>
+      </tr>
      </table>
-     <div class="d-flex justify-content-center">
-       <%= link_to "編集する", edit_pet_path, class: "btn btn-success" %>
-     </div>
-     <span class="pl-5 pb-2">
-       <%= link_to "削除する", pet_path(@pet.id),  data: { confirm: "本当に消しますか？" }, method: :delete, class: "btn btn-sm btn-danger" %>
-     </span>
      <div class="d-flex justify-content-end">
        ペット登録一覧は
        <%= link_to pets_path do %>
