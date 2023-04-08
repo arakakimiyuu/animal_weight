@@ -28,7 +28,6 @@
       </tr>
       <tr>
        <td>性別</td>
-       <td>
         <% if @pet.gender == true %>
           <td>オス</td>
          <% elsif %>
@@ -36,7 +35,6 @@
          <% else %>
          <td>不明</td>
         <% end %>
-       </td>
       </tr>
       <tr>
         <td>性格</td>
@@ -49,6 +47,12 @@
      <span class="pl-5 pb-2">
        <%= link_to "削除する", pet_path(@pet.id),  data: { confirm: "本当に消しますか？" }, method: :delete, class: "btn btn-sm btn-danger" %>
      </span>
+     <div class="d-flex justify-content-end">
+       ペット登録一覧は
+       <%= link_to pets_path do %>
+        こちら
+       <% end %>
+     </div>
     </div>
    </div>
  </div>

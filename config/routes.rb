@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resources:pets, only: [:new, :index, :create, :show, :edit, :update, :destroy]
     resources:posts, only: [:new, :index, :create, :show, :edit, :update, :destroy] do
      resource :favorites, only: [:create, :destroy]
-     resources:commment, only:[:create, :destroy]
+     resources:comments, only:[:create, :destroy]
     end
     get 'customers/mypage/edit' => 'customers#edit'
     patch 'customers/mypage' => 'customers#update'
@@ -32,8 +32,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/' => 'homes#top'
-    resources:customer, only:[:index, :show, :edit, :update]
-    resources:commment, only:[:index, :destroy]
+    resources:customers, only:[:index, :show, :edit, :update]
+    resources:comments, only:[:index, :destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
