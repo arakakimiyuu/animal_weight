@@ -42,10 +42,14 @@
       </tr>
       <tr>
          <td class="d-flex justify-content-center">
-          <%= link_to "編集する", edit_pet_path, class: "btn btn-success" %>
+          <% if @pet.customer == current_customer %>
+           <%= link_to "編集する", edit_pet_path, class: "btn btn-success" %>
+          <% end %>
         </td>
          <td>
-         <%= link_to "削除する", pet_path(@pet.id),  data: { confirm: "本当に消しますか？" }, method: :delete, class: "btn btn-danger" %>
+          <% if @pet.customer == current_customer %>
+           <%= link_to "削除する", pet_path(@pet.id),  data: { confirm: "本当に消しますか？" }, method: :delete, class: "btn btn-danger" %>
+          <% end %>
         </td>
       </tr>
      </table>

@@ -1,7 +1,14 @@
 class Public::PostsController < ApplicationController
 
+  before_action :ensure_current_customer, only: [:edit, :update, :destroy]
+
   def new
     @post = Post.new
+    #ペット登録をしないと投稿できないようにif文をつけた
+   if current_customer.pets.count == 0
+     flash[:notice] = "ペット新規登録をしてから投稿ができるようになります。"
+     redirect_to new_pet_path
+   end
   end
 
   def index
@@ -46,6 +53,14 @@ class Public::PostsController < ApplicationController
     @post.destroy
     redirect_to posts_path
     flash[:notice] = "削除に成功しました。"
+  end
+
+  #編集,更新,削除を別の会員がいじらないようにするための記述
+  def ensure_current_customer
+     @post = Post.find(params[:id])
+     unless @post.customer == current_customer
+      redirect_to post_path(@post)
+     end
   end
 
   private

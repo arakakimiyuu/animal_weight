@@ -22,7 +22,7 @@ class Public::SessionsController < Devise::SessionsController
   # 退会しているかを判断するメソッド
   def reject_customer
     #【処理内容1】 入力されたemailからアカウントを1件取得
-    @customer = Customer.find_by(name: params[:customer][:email])
+    @customer = Customer.find_by(name: params[:customer][:name])
     if @customer
       #【処理内容2】 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
       if @customer.valid_password?(params[:customer][:password]) && (@customer.is_delete == false)

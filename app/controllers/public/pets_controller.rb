@@ -1,5 +1,7 @@
 class Public::PetsController < ApplicationController
 
+  before_action :ensure_current_customer, only: [:edit, :update, :destroy]
+
   def new
     @pet = Pet.new
   end
@@ -42,6 +44,14 @@ class Public::PetsController < ApplicationController
     @pet.destroy
     redirect_to pets_path
     flash[:notice] = "削除に成功しました。"
+  end
+
+  #編集,更新,削除を別の会員がいじらないようにするための記述
+  def ensure_current_customer
+     @pet = Pet.find(params[:id])
+     unless @pet.customer == current_customer
+      redirect_to pet_path(@pet)
+     end
   end
 
   private
