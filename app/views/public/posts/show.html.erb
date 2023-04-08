@@ -38,13 +38,22 @@
           <% end %>
        </td>
       </tr>
+       <td class="d-flex justify-content-center">
+        <%= link_to "編集する", edit_post_path, class: "btn btn-success" %>
+       </td>
+       <td>
+        <%= link_to "削除する", post_path(@post.id),  data: { confirm: "本当に消しますか？" }, method: :delete, class: "btn btn-sm btn-danger" %>
+       </td>
      </table>
-     <div class="d-flex justify-content-center">
-       <%= link_to "編集する", edit_post_path, class: "btn btn-success" %>
+     <table class="comment-post">
+      <%= render 'comments/comment', post: @post %>
+     </table>
+     <div>
+      <%= form_with model: [@post, @comment] do |f| %>
+        <%= f.text_area :comment, rows: '4', placeholder: "コメントをここに" %>
+        <%= f.submit "送信する" %>
+      <% end %>
      </div>
-     <span>
-       <%= link_to "削除する", post_path(@post.id),  data: { confirm: "本当に消しますか？" }, method: :delete, class: "btn btn-sm btn-danger" %>
-     </span>
     </div>
    </div>
  </div>

@@ -1,0 +1,18 @@
+         <% post.comments.each do |comment| %>
+          <tr>
+              <td>
+              <%= link_to (comment.post) do %>
+               <%= comment.post.date %>
+               <div><%= comment.post.weight %></div>
+              <% end %>
+              </td>
+              <td>
+              <%= comment.comment %>
+              </td>
+              <td>
+              <% if comment.customer == current_customer %>
+                <%= link_to "Destroy", post_comment_path(comment.post, comment), method: :delete, remote: true, class: "btn btn-sm btn-danger" %>
+              <% end %>
+              </td>
+          </tr>
+         <% end %>

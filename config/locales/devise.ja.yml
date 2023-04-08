@@ -144,7 +144,7 @@ ja:
         other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした。"
 
 
-  ja:
+ja:
   activerecord:
     attributes:
       admin:

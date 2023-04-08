@@ -8,8 +8,8 @@ class Public::CommentsController < ApplicationController
   end
 
   def destroy
-    comment.destroy
-    redirect_to post_path(post)
+    Comment.find(params[:id]).destroy
+    redirect_to post_path(params[:post_id])
   end
 
   private

@@ -37,6 +37,7 @@
             <% end %>
           <% end %>
          </td>
+         <td><%= link_to "#{post.comments.count} コメント数", post_path(post.id) %></td>
         </tr>
       <% end %>
     </tbody>
