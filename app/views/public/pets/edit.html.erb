@@ -15,7 +15,7 @@
             <%= f.text_field :color, class: "form-control", placeholder: "例) 白" %>
             <%= f.label :生年月日 %><br>
             <%= f.date_select :birth_date, {use_month_numbers: true,start_year: 1930,
-                end_year: (Time.now.year - 0), default: Date.new(2001, 1, 1)} %>
+                end_year: (Time.now.year - 0), default: Date.new(2001, 1, 1)} %><br>
             <%= f.label :性別 %><br>
             <%= f.radio_button :gender, 0 %>
             <%= label :gender, "オス", {style: "display: inline-block;"} %>
