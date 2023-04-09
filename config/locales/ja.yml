@@ -1,4 +1,4 @@
-ja:
+ja: # 日本語の設定を行う
   date:
     formats:
       default: "%Y/%m/%d"
@@ -23,3 +23,11 @@ ja:
       long: "%Y年%m月%d日(%a) %H時%M分%S秒 %Z"
     am: "午前"
     pm: "午後"
+
+
+  enums: # enumの設定を行う
+    pet: #モデル名
+      gender: #カラム名
+        male: "オス"
+        female: "メス"
+        unknown: "不明"

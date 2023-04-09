@@ -31,6 +31,8 @@ Rails.application.routes.draw do
     #顧客の退会処理(ステータスの更新)
     patch 'customers/withdraw'
   end
+  #検索機能
+  get "search" => "searches#search"
 
   namespace :admin do
     get '/' => 'homes#top'
