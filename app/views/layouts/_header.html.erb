@@ -20,6 +20,7 @@
                    <i class="fas fa-list-ul"></i> 投稿一覧
                  <% end %>
                </li>
+             <%#ゲストで入るとペット登録をしないように設定したので一緒にheaderのペット登録が見えないようにする %>
              <% if !current_customer.guest? %>
                <li>
                  <%= link_to new_pet_path, class: 'nav-link text-light' do %>

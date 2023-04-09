@@ -3,6 +3,7 @@
 class Public::RegistrationsController < Devise::RegistrationsController
 
   before_action :ensure_normal_user, only: [:update, :destroy]
+
   #メールアドレス（guest@example.com）は管理者、ゲストユーザーでも更新、削除できない
   def ensure_normal_user
     if resource.email == 'guest@example.com'

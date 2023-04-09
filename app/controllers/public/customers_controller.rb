@@ -2,7 +2,7 @@ class Public::CustomersController < ApplicationController
 
   def myindex #投稿一覧履歴
     @customer = current_customer
-    #
+    #自分の投稿ページが見れる記述
     @posts = Post.where(customer_id: @customer.id).page(params[:page]).per(10)
   end
 
