@@ -15,4 +15,21 @@ class Customer < ApplicationRecord
     super && (is_delete == false)
   end
 
+  #ゲストのemailでデータベースから検索してあればレコードを使用なければパスワード、名前を追加して登録
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |customer|
+      customer.password = SecureRandom.urlsafe_base64
+      customer.name = "guest"
+    end
+  end
+
+  #ゲストか判断する
+  def guest?
+    if self.email == 'guest@example.com'
+      true
+    else
+      false
+    end
+  end
+
 end

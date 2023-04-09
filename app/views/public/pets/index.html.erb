@@ -27,14 +27,7 @@
               <td><%= link_to pet.pet_name, pet_path(pet.id) %></td>
               <td><%= pet.pet_type %></td>
               <td><%= pet.birth_date %></td>
-              <% if pet.gender == 0 %>
-                <td>オス</td>
-              <% elsif pet.gender == 1 %>
-                <td>メス</td>
-              <% else %>
-                <td>不明</td>
-              <% end %>
-            </tr>
+              <td><%= pet.gender_i18n %></td>
           <% end %>
         </tbody>
       </table>

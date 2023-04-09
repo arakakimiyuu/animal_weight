@@ -18,10 +18,17 @@ class Public::SessionsController < Devise::SessionsController
   #   super
   # end
 
+  def guest_sign_in
+    customer = Customer.guest
+    sign_in customer
+    redirect_to root_path
+    flash[:notice] = 'ゲストユーザーとしてログインしました。'
+  end
+
   protected
   # 退会しているかを判断するメソッド
   def reject_customer
-    #【処理内容1】 入力されたemailからアカウントを1件取得
+    #【処理内容1】 入力されたnameからアカウントを1件取得
     @customer = Customer.find_by(name: params[:customer][:name])
     if @customer
       #【処理内容2】 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別

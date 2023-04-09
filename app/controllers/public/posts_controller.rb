@@ -1,6 +1,7 @@
 class Public::PostsController < ApplicationController
 
   before_action :ensure_current_customer, only: [:edit, :update, :destroy]
+  before_action :reject_guest_customer, only: [:new, :create, :edit, :update, :destroy]
 
   def new
     @post = Post.new

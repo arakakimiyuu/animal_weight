@@ -1,6 +1,7 @@
 class Public::PetsController < ApplicationController
 
   before_action :ensure_current_customer, only: [:edit, :update, :destroy]
+  before_action :reject_guest_customer, only: [:new, :create, :edit, :update, :destroy]
 
   def new
     @pet = Pet.new
@@ -59,4 +60,5 @@ class Public::PetsController < ApplicationController
   def pet_params
     params.require(:pet).permit(:pet_name, :pet_type, :pet_kind, :birth_date, :gender, :color, :personality, :customer_id, :image)
   end
+
 end
