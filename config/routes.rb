@@ -18,12 +18,14 @@ Rails.application.routes.draw do
     get 'homes/about'
     resources:pets, only: [:new, :index, :create, :show, :edit, :update, :destroy]
     resources:posts, only: [:new, :index, :create, :show, :edit, :update, :destroy] do
+     get 'posts/mypage'
      resource :favorites, only: [:create, :destroy]
      resources:comments, only:[:create, :destroy]
     end
     get 'customers/mypage/edit' => 'customers#edit'
     patch 'customers/mypage' => 'customers#update'
     get 'customers/mypage' => 'customers#show'
+    get 'customers/myindex' => 'customers#myindex'
     #顧客の退会確認画面
     get 'customers/check'
     #顧客の退会処理(ステータスの更新)
