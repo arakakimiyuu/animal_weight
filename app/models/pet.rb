@@ -12,19 +12,19 @@ class Pet < ApplicationRecord
 
   def self.looks(search, word)
     if search == "perfect_match"
-      @pet = Pet.where("pet_name LIKE?", "#{word}")
+      @pet = Pet.where("pet_type LIKE?", "#{word}")
     elsif search == "forward_match"
-      @pet = Pet.where("pet_name LIKE?","#{word}%")
+      @pet = Pet.where("pet_type LIKE?","#{word}%")
     elsif search == "backward_match"
-      @pet = Pet.where("pet_name LIKE?","%#{word}")
+      @pet = Pet.where("pet_type LIKE?","%#{word}")
     elsif search == "partial_match"
-      @pet = Pet.where("pet_name LIKE?","%#{word}%")
+      @pet = Pet.where("pet_type LIKE?","%#{word}%")
     else
       @pet = Pet.all
     end
   end
 
-  #enum の定義    
+  #enum の定義
   enum gender: { male: 0, female: 1, unknown: 2 }
 
 end

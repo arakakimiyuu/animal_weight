@@ -16,7 +16,7 @@
         </tr>
       <% end %>
     </tbody>
-  <% else %>
+  <% elsif @range == "Post" %>
     <!--検索対象モデルがPetではない時(= 検索対象モデルがPostの時) -->
     <tbody>
       <% @posts.each do |post| %>
@@ -28,5 +28,7 @@
         </tr>
       <% end %>
     </tbody>
+  <% else %>
+    <h3>見つかりませんでした。</h3>
   <% end %>
 </table>
