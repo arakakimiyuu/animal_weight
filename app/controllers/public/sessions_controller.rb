@@ -25,7 +25,7 @@ class Public::SessionsController < Devise::SessionsController
   def after_sign_up_path_for(resource)
     root_path
   end
-
+  
   def guest_sign_in
     customer = Customer.guest
     sign_in customer
