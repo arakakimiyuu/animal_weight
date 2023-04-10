@@ -31,7 +31,8 @@ Rails.application.routes.draw do
     patch 'customers/mypage' => 'customers#update'
     get 'customers/mypage' => 'customers#show'
     #投稿履歴一覧画面
-    get 'customers/myindex' => 'customers#myindex'
+    get 'customers/mypost' => 'customers#mypost'
+    #ペット登録履歴一覧画面
     get 'customers/mypet' => 'customers#mypet'
     #顧客の退会確認画面
     get 'customers/check'

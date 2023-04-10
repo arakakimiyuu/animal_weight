@@ -1,12 +1,12 @@
 class Public::CustomersController < ApplicationController
 
-  def myindex #投稿一覧履歴
+  def mypost #投稿履歴一覧
     @customer = current_customer
     #自分の投稿ページが見れる記述
     @posts = Post.where(customer_id: @customer.id).page(params[:page]).per(10)
   end
 
-  def mypet
+  def mypet #ペット登録履歴一覧
     @customer = current_customer
     @pets = Pet.where(customer_id: @customer.id).page(params[:page]).per(10)
   end
