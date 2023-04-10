@@ -20,5 +20,6 @@ module AnimalWeight
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.time_zone = 'Tokyo' #東京の時間設定
   end
 end

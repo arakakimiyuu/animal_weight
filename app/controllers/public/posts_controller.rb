@@ -1,7 +1,7 @@
 class Public::PostsController < ApplicationController
 
   before_action :ensure_current_customer, only: [:edit, :update, :destroy]
-  
+
   before_action :reject_guest_customer, only: [:new, :create, :edit, :update, :destroy]
 
   def new
@@ -32,7 +32,7 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
-    @comments = @post.comments.page(params[:page]).per(2)
+    @comments = @post.comments.page(params[:page]).per(10)
   end
 
   def edit
