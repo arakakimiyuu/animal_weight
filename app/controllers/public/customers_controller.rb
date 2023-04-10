@@ -6,6 +6,11 @@ class Public::CustomersController < ApplicationController
     @posts = Post.where(customer_id: @customer.id).page(params[:page]).per(10)
   end
 
+  def mypet
+    @customer = current_customer
+    @pets = Pet.where(customer_id: @customer.id).page(params[:page]).per(10)
+  end
+
   def show
     @customer = current_customer
 

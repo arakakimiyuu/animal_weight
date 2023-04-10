@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     get 'customers/mypage' => 'customers#show'
     #投稿履歴一覧画面
     get 'customers/myindex' => 'customers#myindex'
+    get 'customers/mypet' => 'customers#mypet'
     #顧客の退会確認画面
     get 'customers/check'
     #顧客の退会処理(ステータスの更新)
