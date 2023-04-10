@@ -10,6 +10,7 @@ class Pet < ApplicationRecord
       image.variant(resize_to_limit: [width, height]).processed
    end
 
+  #検索機能
   def self.looks(search, word)
     if search == "perfect_match"
       @pet = Pet.where("pet_type LIKE?", "#{word}")

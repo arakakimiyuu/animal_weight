@@ -18,7 +18,7 @@
                 end_year: (Time.now.year - 0), #入力値の終了位置（現在から１０年前に指定）
                 default: Date.new(2001, 1, 1)} %><br> <%#デフォルトで表示されている値 %>
             <%= f.label :性別 %><br>
-            <%= f.collection_radio_buttons :gender, Pet.genders_i18n, :first, :last %><br>  <%#gem 'devise-i18n' %>
+            <%= f.collection_radio_buttons :gender, Pet.genders_i18n, :first, :last %><br>  <%# {"male"=>"オス", "female"=>"メス", "unknown"=>"不明 %>
             <%= f.label :性格 %>
             <%= f.text_area :personality, class: "form-control", placeholder: "例) 活発" %>
             <div class="pt-3">

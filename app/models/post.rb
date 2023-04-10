@@ -8,6 +8,7 @@ class Post < ApplicationRecord
     favorites.exists?(customer_id: customer.id)
   end
 
+　#検索機能
   def self.looks(search, word)
     if search == "perfect_match"
       @post = Post.where("feed LIKE?", "#{word}")
