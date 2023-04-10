@@ -1,34 +1,46 @@
 <h2>検索結果</h2>
 
-<table class="table table-hover table-inverse">
+
   <!--検索対象モデルがPetの時 -->
   <% if @range == "Pet" %>
-    <tbody>
-      <% @pets.each do |pet| %>
-        <tr>
-          <td><%= pet.pet_name %></td>
-          <td><%= pet.pet_type %></td>
-          <td><%= pet.pet_kind %></td>
-          <td><%= pet.gender_i18n %></td>
-          <td><%= pet.color %></td>
-          <td><%= pet.birth_date %></td>
-          <td><%= pet.personality %></td>
-        </tr>
-      <% end %>
-    </tbody>
+    <% if @pets.blank? %>
+      <h3>見つかりませんでした。</h3>
+    <% else %>
+      <table class="table table-hover table-inverse">
+        <tbody>
+          <% @pets.each do |pet| %>
+            <tr>
+              <td><%= pet.pet_name %></td>
+              <td><%= pet.pet_type %></td>
+              <td><%= pet.pet_kind %></td>
+              <td><%= pet.gender_i18n %></td>
+              <td><%= pet.color %></td>
+              <td><%= pet.birth_date %></td>
+              <td><%= pet.personality %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
   <% elsif @range == "Post" %>
     <!--検索対象モデルがPetではない時(= 検索対象モデルがPostの時) -->
-    <tbody>
-      <% @posts.each do |post| %>
-        <tr>
-          <td><%= post.date %></td>
-          <td><%= post.feed %></td>
-          <td><%= post.weight %></td>
-          <td><%= post.amount_food %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  <% else %>
-    <h3>見つかりませんでした。</h3>
+    <% if @posts.blank? %>
+      <h3>見つかりませんでした。</h3>
+    <% else %>
+      <table class="table table-hover table-inverse">
+        <tbody>
+          <% @posts.each do |post| %>
+            <tr>
+              <td><%= post.date %></td>
+              <td><%= post.feed %></td>
+              <td><%= post.weight %></td>
+              <td><%= post.amount_food %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
   <% end %>
-</table>
+
+
+

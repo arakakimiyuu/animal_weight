@@ -2,11 +2,11 @@
 
 class Public::PasswordsController < Devise::PasswordsController
 
-  before_action :ensure_normal_user, only: :create
-
-  def ensure_normal_user
+  before_action :ensure_normal_customer, only: :create
+  #メールアドレスの再設定できない
+  def ensure_normal_customer
     if params[:customer][:email].downcase == 'guest@example.com'
-      redirect_to new_user_session_path
+      redirect_to new_customer_session_path
       flash[:notice] = 'ゲストユーザーのパスワード再設定はできません。'
     end
   end
