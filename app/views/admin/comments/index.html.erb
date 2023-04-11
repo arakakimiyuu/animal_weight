@@ -1,2 +1,16 @@
-<h1>Admin::Comments#index</h1>
-<p>Find me in app/views/admin/comments/index.html.erb</p>
+       <% @comments.each do |comment| %>
+          <tr>
+              <td>
+               <%= comment.post.created_at.to_s(:datetime_jp) %> <%#to_sメソッドを呼び出して、引数にフォーマット名を指定 %>
+               <div><%= comment.customer.name %></div>
+              </td>
+              <td class="pl-3">
+               <%= comment.comment %>
+              </td>
+              <td class="pl-3">
+
+                <%= link_to "削除", admin_comment_path(comment), method: :delete, class: "btn btn-sm btn-danger" %>
+
+              </td>
+          </tr>
+         <% end %>

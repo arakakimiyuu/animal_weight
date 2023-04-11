@@ -9,9 +9,19 @@ class Public::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+   def create
+     @customer = Customer.find_by(name: params[:name])
+    if @customer && @customer.authenticate(params[:password])
+      log_in(@customer)
+
+      redirect_to @customer
+    else
+      #------------追記--------------
+      reject_customer
+      #-----------------------------
+
+    end
+   end
 
   # DELETE /resource/sign_out
   # def destroy
@@ -25,7 +35,7 @@ class Public::SessionsController < Devise::SessionsController
   def after_sign_up_path_for(resource)
     root_path
   end
-  
+
   def guest_sign_in
     customer = Customer.guest
     sign_in customer
@@ -40,13 +50,13 @@ class Public::SessionsController < Devise::SessionsController
     @customer = Customer.find_by(name: params[:customer][:name])
     if @customer
       #【処理内容2】 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
-      if @customer.valid_password?(params[:customer][:password]) && (@customer.is_delete == false)
+      if @customer.valid_password?(params[:customer][:password]) && (@customer.is_delete == true)
         flash[:notice] = "退会済みです。再度ご登録をしてご利用ください"
-        redirect_to new_customer_session_path
       else
         flash[:notice] = "項目を入力してください"
       end
     end
+    redirect_to new_customer_session_path
   end
 
   # If you have extra params to permit, append them to the sanitizer.

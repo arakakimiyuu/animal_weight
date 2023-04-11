@@ -1,5 +1,15 @@
 class Public::CustomersController < ApplicationController
 
+  before_action :ensure_normal_customer, only: [:update, :withdrow]
+
+  #メールアドレス（guest@example.com）は管理者、ゲストユーザーでも更新、削除できない
+  def ensure_normal_customer
+    if current_customer.email == 'guest@example.com'
+      flash[:notice] = 'ゲストユーザーの更新、削除できません。'
+      redirect_to root_path
+    end
+  end
+
   def mypost #投稿履歴一覧
     @customer = current_customer
     #自分の投稿ページが見れる記述
