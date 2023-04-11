@@ -1,2 +1,49 @@
-<h1>Admin::Customers#edit</h1>
-<p>Find me in app/views/admin/customers/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <h2 class="py-5">
+        <%= @customer.name %>さんの会員情報編集
+      </h2>
+    </div>
+  </div>
+
+  <%= form_with model: @customer, url: admin_customer_path do |f| %>
+    <div class="row">
+      <div class="col-8 offset-1">
+        <table>
+            <tr>
+              <td class="pr-5 py-3">会員ID</td>
+              <td><%= @customer.id %></td>
+            </tr>
+            <tr class="field">
+              <td class="pr-5 py-3">名前</td>
+              <td class="pr-3"><%= f.text_field :name, class: "form-control" %></td>
+            </tr>
+            <tr>
+              <td class="pr-5 py-3">メールアドレス</td>
+              <td class="pr-3"><%= f.text_field :email, class: "form-control" %></td>
+            </tr>
+            <tr>
+              <td class="pr-5 py-3">会員ステータス</td>
+              <td>
+                <% if @customer.is_delete == false %>
+                  <%= f.radio_button :is_delete, :false, checked: true %>
+                   有効
+                  <%= f.radio_button :is_delete, :true %>
+                   退会
+                <% else %>
+                  <%= f.radio_button :is_delete, :false %>
+                   有効
+                  <%= f.radio_button :is_delete, :true, checked: true %>
+                   退会
+                <% end %>
+              </td>
+            </tr>
+        </table>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center mt-3">
+    <%= f.submit '変更を保存', class: 'btn btn-success' %>
+    </div>
+  <% end %>
+</div>
