@@ -58,3 +58,4 @@ gem 'kaminari','~> 1.2.1'
 gem 'devise'
 gem "enum_help"
 gem 'devise-i18n' #deviseを日本語化
+gem 'jquery-rails' #jQueryの読み込み

@@ -1,10 +1,10 @@
           <% if post.favorited_by?(current_customer) %>
-            <%= link_to post_favorites_path(post.id), method: :delete, remote: true do %>
+            <%= link_to post_favorites_path(post.id), method: :delete, remote: true do %> <%# 非同期化remote: trueを追加 %>
              <span style="color:red;">❤︎</span>
              <%= post.favorites.count %>いいね
             <% end %>
            <% else %>
-            <%= link_to post_favorites_path(post.id), method: :post, remote: true do %>
+            <%= link_to post_favorites_path(post.id), method: :post, remote: true do %> <%# 非同期化remote: trueを追加 %>
              <span style="color:blue;">❤︎</span>
              <%= post.favorites.count %>いいね
             <% end %>

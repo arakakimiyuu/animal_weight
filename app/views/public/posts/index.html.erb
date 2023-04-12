@@ -24,8 +24,8 @@
          <td><%= post.date %></td>
          <td><%= link_to post.pet.pet_type, post_path(post.id) %></td>
          <td><%= post.weight %></td>
-         <td>
-          <%= render 'btn', post: post %>
+         <td id="btn_<%= post.id %>">
+          <%= render 'btn', post: post %> <%#いいね機能の部分テンプレート %>
          </td>
          <td><%= link_to "#{post.comments.count} コメント数", post_path(post.id) %></td>
         </tr>
