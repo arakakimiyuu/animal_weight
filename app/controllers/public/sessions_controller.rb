@@ -10,16 +10,11 @@ class Public::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
    def create
-     @customer = Customer.find_by(name: params[:name])
-    if @customer && @customer.authenticate(params[:password])
-      log_in(@customer)
-
-      redirect_to @customer
+     @customer = Customer.find_by(name: params[:customer][:name])
+    if sign_in(@customer)
+      redirect_to customers_mypage_path
     else
-      #------------追記--------------
       reject_customer
-      #-----------------------------
-
     end
    end
 
@@ -53,7 +48,7 @@ class Public::SessionsController < Devise::SessionsController
       if @customer.valid_password?(params[:customer][:password]) && (@customer.is_delete == true)
         flash[:notice] = "退会済みです。再度ご登録をしてご利用ください"
       else
-        flash[:notice] = "項目を入力してください"
+        flash[:notice] = "入力が間違っています"
       end
     end
     redirect_to new_customer_session_path
