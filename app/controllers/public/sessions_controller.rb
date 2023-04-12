@@ -11,7 +11,9 @@ class Public::SessionsController < Devise::SessionsController
   # POST /resource/sign_in
    def create
      @customer = Customer.find_by(name: params[:customer][:name])
-    if sign_in(@customer)
+
+     # ログインの成功を判断
+    if @customer && @customer.valid_password?(params[:customer][:password]) && (@customer.is_delete != true) && sign_in(@customer)
       redirect_to customers_mypage_path
     else
       reject_customer
@@ -43,15 +45,13 @@ class Public::SessionsController < Devise::SessionsController
   def reject_customer
     #【処理内容1】 入力されたnameからアカウントを1件取得
     @customer = Customer.find_by(name: params[:customer][:name])
-    if @customer
-      #【処理内容2】 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
-      if @customer.valid_password?(params[:customer][:password]) && (@customer.is_delete == true)
-        flash[:notice] = "退会済みです。再度ご登録をしてご利用ください"
-      else
-        flash[:notice] = "入力が間違っています"
-      end
+    #【処理内容2】 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
+    if @customer && @customer.valid_password?(params[:customer][:password]) && (@customer.is_delete == true)
+      message = "退会済みです。再度ご登録をしてご利用ください"
+    else
+      message = "入力が間違っています"
     end
-    redirect_to new_customer_session_path
+    redirect_to new_customer_session_path, notice: message
   end
 
   # If you have extra params to permit, append them to the sanitizer.

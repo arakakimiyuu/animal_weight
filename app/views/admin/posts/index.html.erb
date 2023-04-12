@@ -25,10 +25,10 @@
           <td><%= link_to post.pet.pet_type, post_path(post.id) %></td>
           <td><%= post.weight %></td>
           <td>
-           <%#= render 'public/posts/btn', post: post %>
+           <%= render 'public/posts/btn', post: post %>
           </td>
           <td class="pl-3">
-           <%= link_to "削除", admin_post_path(post), method: :delete, class: "btn btn-danger", data:{ confilm: "本当に削除しますか？" } %>
+           <%= link_to "削除", admin_post_path(post), method: :delete, class: "btn btn-danger", data:{ confirm: "本当に削除しますか？" } %>
           </td>
          </tr>
        <% end %>

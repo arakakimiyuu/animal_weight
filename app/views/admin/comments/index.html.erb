@@ -25,7 +25,7 @@
             <%= comment.comment %>
            </td>
            <td class="pl-3">
-            <%= link_to "削除", admin_comment_path(comment), method: :delete, class: "btn btn-danger", data:{ confilm: "本当に削除しますか？" } %>
+            <%= link_to "削除", admin_comment_path(comment), method: :delete, class: "btn btn-danger", data:{ confirm: "本当に削除しますか？" } %>
            </td>
           </tr>
         <% end %>
