@@ -4,8 +4,6 @@ class Admin::PostsController < ApplicationController
     @posts = Post.all.page(params[:page]).per(10)
   end
 
-  
-
   def destroy
     @post = Post.find(params[:id])
     @post.destroy

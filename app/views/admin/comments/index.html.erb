@@ -1,16 +1,39 @@
-       <% @comments.each do |comment| %>
+<div class="container">
+ <div class="row">
+    <div class="col-4 offset-1">
+      <h2 class="py-5">
+        <span>顧客コメント一覧</span>
+      </h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8 offset-2">
+      <table class="table table-hover table-inverse mx-auto">
+        <thead>
           <tr>
-              <td>
-               <%= comment.post.created_at.to_s(:datetime_jp) %> <%#to_sメソッドを呼び出して、引数にフォーマット名を指定 %>
-               <div><%= comment.customer.name %></div>
-              </td>
-              <td class="pl-3">
-               <%= comment.comment %>
-              </td>
-              <td class="pl-3">
-
-                <%= link_to "削除", admin_comment_path(comment), method: :delete, class: "btn btn-sm btn-danger" %>
-
-              </td>
+           <th>コメント</th>
           </tr>
-         <% end %>
+        </thead>
+        <tbody>
+        <% @comments.each do |comment| %>
+          <tr>
+           <td>
+            <%= comment.post.created_at.to_s(:datetime_jp) %> <%#to_sメソッドを呼び出して、引数にフォーマット名を指定 %>
+            <div><%= comment.customer.name %></div>
+           </td>
+           <td class="pl-3">
+            <%= comment.comment %>
+           </td>
+           <td class="pl-3">
+            <%= link_to "削除", admin_comment_path(comment), method: :delete, class: "btn btn-danger", data:{ confilm: "本当に削除しますか？" } %>
+           </td>
+          </tr>
+        <% end %>
+         </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center">
+    <%= paginate @comments %>
+  </div>
+</div>
