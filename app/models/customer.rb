@@ -31,5 +31,5 @@ class Customer < ApplicationRecord
       false
     end
   end
-y
+
 end
