@@ -27,7 +27,7 @@
               <td class="pr-5 py-3">会員ステータス</td>
               <td>
                 <% if @customer.is_delete == false %>
-                  <%= f.radio_button :is_delete, :false, checked: true %>
+                  <%= f.radio_button :is_delete, :false, checked: true %> <%#checked: true 最初からチェックがついている %>
                    有効
                   <%= f.radio_button :is_delete, :true %>
                    退会

@@ -11,8 +11,8 @@ class Public::SessionsController < Devise::SessionsController
   # POST /resource/sign_in
    def create
      @customer = Customer.find_by(name: params[:customer][:name])
-
      # ログインの成功を判断
+     #もし名前が見つかった場合かつパスワードがあっているかかつログインしてないかつサインインしてる場合
     if @customer && @customer.valid_password?(params[:customer][:password]) && (@customer.is_delete != true) && sign_in(@customer)
       redirect_to customers_mypage_path
     else
@@ -43,14 +43,15 @@ class Public::SessionsController < Devise::SessionsController
   protected
   # 退会しているかを判断するメソッド
   def reject_customer
-    #【処理内容1】 入力されたnameからアカウントを1件取得
+    #入力されたnameからアカウントを1件取得
     @customer = Customer.find_by(name: params[:customer][:name])
-    #【処理内容2】 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
+    # 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
     if @customer && @customer.valid_password?(params[:customer][:password]) && (@customer.is_delete == true)
       message = "退会済みです。再度ご登録をしてご利用ください"
     else
       message = "入力が間違っています"
     end
+    #renderの場合flash[:notice], redirect_toの場合notice: message
     redirect_to new_customer_session_path, notice: message
   end
 

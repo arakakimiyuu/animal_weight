@@ -17,8 +17,8 @@ class Customer < ApplicationRecord
 
   #ゲストのemailでデータベースから検索してあればレコードを使用なければパスワード、名前を追加して登録
   def self.guest
-    find_or_create_by!(email: 'guest@example.com') do |customer|
-      customer.password = SecureRandom.urlsafe_base64
+    find_or_create_by!(email: 'guest@example.com') do |customer| #そのメールアドレスが見つからなかったら
+      customer.password = SecureRandom.urlsafe_base64 #ランダムに安全なパスワードを作るメッソド
       customer.name = "guest"
     end
   end
