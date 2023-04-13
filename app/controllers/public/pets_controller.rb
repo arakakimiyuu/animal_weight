@@ -1,7 +1,7 @@
 class Public::PetsController < ApplicationController
-
+  #編集,更新,削除を別の会員がいじらないようにするための記述
   before_action :ensure_current_customer, only: [:edit, :update, :destroy]
-
+  #ゲストユーザーでログインできても一覧、詳細は見れても登録、作成、更新、削除はできない
   before_action :reject_guest_customer, only: [:new, :create, :edit, :update, :destroy]
 
   def new
@@ -48,7 +48,7 @@ class Public::PetsController < ApplicationController
     flash[:notice] = "削除に成功しました。"
   end
 
-  #編集,更新,削除を別の会員がいじらないようにするための記述
+  #投稿者 = 現在ログインしている会員でない場合
   def ensure_current_customer
      @pet = Pet.find(params[:id])
      unless @pet.customer == current_customer

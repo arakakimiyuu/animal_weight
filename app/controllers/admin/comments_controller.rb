@@ -1,5 +1,5 @@
 class Admin::CommentsController < ApplicationController
-
+  #ログイン認証が成功していないと表示できない
   before_action :authenticate_admin!
 
   def index

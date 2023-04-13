@@ -1,8 +1,8 @@
 class Public::CustomersController < ApplicationController
-
+  #管理者、ゲストユーザーでも更新、削除できない
   before_action :ensure_normal_customer, only: [:update, :withdrow]
 
-  #メールアドレス（guest@example.com）は管理者、ゲストユーザーでも更新、削除できない
+  #ゲストのメールアドレスを変えれない
   def ensure_normal_customer
     if current_customer.email == 'guest@example.com'
       flash[:notice] = 'ゲストユーザーの更新、削除できません。'
@@ -12,7 +12,6 @@ class Public::CustomersController < ApplicationController
 
   def mypost #投稿履歴一覧
     @customer = current_customer
-    #自分の投稿ページが見れる記述
     @posts = Post.where(customer_id: @customer.id).page(params[:page]).per(10)
   end
 

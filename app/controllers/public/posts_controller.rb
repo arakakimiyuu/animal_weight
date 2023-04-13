@@ -1,7 +1,7 @@
 class Public::PostsController < ApplicationController
-
+  #編集,更新,削除を別の会員がいじらないようにするための記述
   before_action :ensure_current_customer, only: [:edit, :update, :destroy]
-
+  #ゲストユーザーでログインできても一覧、詳細は見れても登録、作成、更新、削除はできない
   before_action :reject_guest_customer, only: [:new, :create, :edit, :update, :destroy]
 
   def new
@@ -56,7 +56,7 @@ class Public::PostsController < ApplicationController
     flash[:notice] = "削除に成功しました。"
   end
 
-  #編集,更新,削除を別の会員がいじらないようにするための記述
+  #投稿者 = 現在ログインしている会員でない場合
   def ensure_current_customer
      @post = Post.find(params[:id])
      unless @post.customer == current_customer

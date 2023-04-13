@@ -1,4 +1,10 @@
 class Public::CommentsController < ApplicationController
+
+  #編集,更新,削除を別の会員が変えないようにするための記述
+  before_action :ensure_current_customer, only: [:destroy]
+  #ゲストユーザーでログインできても作成、削除はできない
+  before_action :reject_guest_customer, only: [:create, :destroy]
+
   def create
     post = Post.find(params[:post_id])
     comment = current_customer.comments.new(comment_params)
@@ -10,6 +16,14 @@ class Public::CommentsController < ApplicationController
   def destroy
     Comment.find(params[:id]).destroy
     redirect_to post_path(params[:post_id])
+  end
+
+  #投稿者 = 現在ログインしている会員でない場合
+  def ensure_current_customer
+     @post = Post.find(params[:id])
+     unless @post.customer == current_customer
+      redirect_to post_path(@post)
+     end
   end
 
   private
