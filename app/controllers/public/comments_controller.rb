@@ -6,24 +6,27 @@ class Public::CommentsController < ApplicationController
   before_action :reject_guest_customer, only: [:create, :destroy]
 
   def create
-    post = Post.find(params[:post_id])
+    @post = Post.find(params[:post_id])
     comment = current_customer.comments.new(comment_params)
-    comment.post_id = post.id
+    comment.post_id = @post.id
     comment.save
-    redirect_to post_path(post)
+
+    @comments = @post.comments.page(params[:page]).per(10)
+    @comment = @post.comments.build(customer_id: current_customer.id)
+    render "public/posts/show"  #render先にjsファイルを指定
   end
 
   def destroy
-    Comment.find(params[:id]).destroy
-    redirect_to post_path(params[:post_id])
+    current_customer.comments.find(params[:id]).destroy
+    
+    @comments = @post.comments.page(params[:page]).per(10)
+    @comment = @post.comments.new(customer_id: current_customer.id)
+    render "public/posts/show"  #render先にjsファイルを指定
   end
 
   #投稿者 = 現在ログインしている会員でない場合
   def ensure_current_customer
-     @post = Post.find(params[:id])
-     unless @post.customer == current_customer
-      redirect_to post_path(@post)
-     end
+     @post = Post.find(params[:post_id] || params[:id] )
   end
 
   private
