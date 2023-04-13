@@ -4,7 +4,9 @@
       <h1>マイページ</h1>
       <div>
         <h2>登録情報</h2>
-        <%= link_to "編集する", customers_mypage_edit_path, class: "btn btn-success" %>
+        <% if !current_customer.guest? %> <%#ゲストログインした場合、編集ページを変えられないようにする記述 %>
+         <%= link_to "編集する", customers_mypage_edit_path, class: "btn btn-success" %>
+        <% end %>
       </div>
       <table class="table">
         <tr>

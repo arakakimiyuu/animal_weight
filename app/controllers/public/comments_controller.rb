@@ -13,7 +13,7 @@ class Public::CommentsController < ApplicationController
 
     @comments = @post.comments.page(params[:page]).per(10)
     @comment = @post.comments.build(customer_id: current_customer.id)
-    render "public/posts/show"  #render先にjsファイルを指定
+    render "public/posts/show"  
   end
 
   def destroy
@@ -21,7 +21,7 @@ class Public::CommentsController < ApplicationController
     
     @comments = @post.comments.page(params[:page]).per(10)
     @comment = @post.comments.new(customer_id: current_customer.id)
-    render "public/posts/show"  #render先にjsファイルを指定
+    render "public/posts/show"  
   end
 
   #投稿者 = 現在ログインしている会員でない場合
