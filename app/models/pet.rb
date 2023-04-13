@@ -1,7 +1,19 @@
 class Pet < ApplicationRecord
   belongs_to :customer
-   has_one_attached :image
+  has_one_attached :image
 
+  #バリデーション
+  validates :image, presence: true
+  validates :pet_name, presence: true
+  validates :pet_type, presence: true
+  validates :pet_kind, presence: true
+  validates :gender, presence: true
+  validates :birth_date, acceptance: true
+  validates :color, presence: true
+  validates :personality, presence: true
+
+
+  #画像
    def get_profile_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')

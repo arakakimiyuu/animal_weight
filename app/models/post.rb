@@ -4,10 +4,15 @@ class Post < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
 
+  #バリデーション
+  validates :date, presence: true
+  validates :weight, presence: true
+  validates :feed, presence: true
+  validates :amount_food, presence: true
+
   def favorited_by?(customer)
     favorites.exists?(customer_id: customer.id)
   end
-
 
   #検索機能
   def self.looks(search, word)

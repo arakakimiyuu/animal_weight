@@ -1,7 +1,8 @@
 <div class='container px-5 px-0'>
   <div class="row pt-5">
     <div class="col-md-4 offset-md-4">
-      <h2>投稿新規登録</h2>
+      <h2>新規投稿</h2>
+      <%= render 'layouts/errors', obj: @post %>
         <%= form_with model: @post, url: posts_path, method: :post, local: true do |f| %>
             <%= f.label :動物の種類 %>
             <%= f.collection_select :pet_id, Pet.all, :id, :pet_type, { include_blank: '選択してください'}, { class: 'form-control'} %><br>
@@ -11,6 +12,7 @@
             </diV>
             <diV class="form-inline">
              <%= f.label :体重 %>
+
             <div class="pl-3">
              <%= f.text_field :weight, class: "form-control", placeholder: "例) 6kg" %>
             </div>

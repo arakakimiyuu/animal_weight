@@ -6,6 +6,7 @@
       </h2>
     </div>
   </div>
+  <%= render 'layouts/errors', obj: @customer %>
 
   <%= form_with model: @customer, url: admin_customer_path do |f| %>
     <div class="row">

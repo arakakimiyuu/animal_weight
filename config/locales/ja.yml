@@ -31,3 +31,9 @@ ja: # 日本語の設定を行う
         male: "オス"
         female: "メス"
         unknown: "不明"
+
+  activerecord:
+    attributes:
+      admin:
+        customer:
+          name: "名前"

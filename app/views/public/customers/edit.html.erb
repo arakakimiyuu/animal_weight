@@ -2,6 +2,7 @@
   <div class="row pt-3">
     <div class="col-md-12">
     <h1 class="p-2">会員情報編集</h1>
+    <%= render 'layouts/errors', obj: @customer %>
      <%= form_with model: @customer, url: customers_mypage_path do |f| %>
       <table class="table">
         <tbody>

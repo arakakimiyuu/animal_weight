@@ -2,6 +2,7 @@
   <div class="row pt-5">
     <div class="col-md-6 offset-md-3">
       <h2>ペット登録編集</h2>
+      <%= render 'layouts/errors', obj: @pet %>
         <%= form_with model: @pet, url: pet_path, method: :patch, local: true do |f| %>
             <%= f.label :動物画像 %>
             <%= f.file_field :image, placeholder: "ファイルを選択", accept: "image/*" %><br>
