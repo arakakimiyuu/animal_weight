@@ -10,23 +10,24 @@ class Public::CommentsController < ApplicationController
     comment = current_customer.comments.new(comment_params)
     comment.post_id = @post.id
     comment.save
-
     @comments = @post.comments.page(params[:page]).per(10)
-    @comment = @post.comments.build(customer_id: current_customer.id)
-    render "public/posts/show"  
+    render:comment
   end
 
   def destroy
-    current_customer.comments.find(params[:id]).destroy
-    
+    comment = PostComment.find(params[:id])
+    comment.destroy
+
     @comments = @post.comments.page(params[:page]).per(10)
-    @comment = @post.comments.new(customer_id: current_customer.id)
-    render "public/posts/show"  
+    render:comment
   end
 
   #投稿者 = 現在ログインしている会員でない場合
   def ensure_current_customer
-     @post = Post.find(params[:post_id] || params[:id] )
+    @post = Post.find(params[:id])
+    unless @post.customer == current_customer
+     redirect_to post_path(@post)
+    end
   end
 
   private

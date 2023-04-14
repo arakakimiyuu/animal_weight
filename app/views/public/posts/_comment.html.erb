@@ -1,4 +1,4 @@
-         <% comments.each do |comment| %>
+         <% post.comments.each do |comment| %>
           <tr>
               <td>
                <%= comment.post.created_at.to_s(:datetime_jp) %> <%#to_sメソッドを呼び出して、引数にフォーマット名を指定 %>
@@ -8,8 +8,8 @@
                <%= comment.comment %>
               </td>
               <td class="pl-3">
-              <% if comment.customer == current_customer %>  <!--非同期通信化のためremote: trueを削除-->
-                <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, data: { confirm: "本当に消しますか？" }, class: "btn btn-danger" %>
+              <% if comment.customer == current_customer %>  <!--非同期通信化のためremote: trueを追加-->
+                <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, data: { confirm: "本当に消しますか？" }, remote: true, class: "btn btn-danger" %>
               <% end %>
               </td>
           </tr>
