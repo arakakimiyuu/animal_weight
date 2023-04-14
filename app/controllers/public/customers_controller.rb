@@ -12,6 +12,16 @@ class Public::CustomersController < ApplicationController
 
   def mypost #投稿履歴一覧
     @customer = current_customer
+
+    #ビューからの指示を受けるための名前を定義
+    if params[:latest]
+     @customers = Customer.latest
+    elsif params[:old]
+     @customers = Customer.old
+    else
+     @customers = Customer.all
+    end
+
     @posts = Post.where(customer_id: @customer.id).page(params[:page]).per(10)
   end
 

@@ -14,6 +14,15 @@ class Public::PostsController < ApplicationController
   end
 
   def index
+    #ビューからの指示を受けるための名前を定義
+    if params[:latest]
+     @posts = Post.latest
+    elsif params[:old]
+     @posts = Post.old
+    else
+     @posts = Post.all
+    end
+
     @posts = Post.all.page(params[:page]).per(10)
   end
 

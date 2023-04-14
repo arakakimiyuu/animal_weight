@@ -13,6 +13,10 @@
         <% end %>
         から
      </div>
+     <div>
+       <%= link_to '新しい順', pets_path(latest: "true") %>
+       |<%= link_to '古い順', pets_path(old: "true") %>
+     </div>
       <table class="table">
         <thead>
           <tr>
@@ -32,6 +36,7 @@
               <td><%= pet.pet_type %></td>
               <td><%= pet.birth_date %></td>
               <td><%= pet.gender_i18n %></td>
+              <td><%= pet.created_at.to_s(:datetime_jp) %></td>
           <% end %>
         </tbody>
       </table>
@@ -40,5 +45,5 @@
   </div>
 </div>
 <div class="d-flex justify-content-center">
-  <%= paginate @pets %>
+  <%#= paginate @pets %>
 </div>

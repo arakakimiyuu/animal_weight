@@ -10,6 +10,16 @@ class Public::PetsController < ApplicationController
 
   def index
     @pets = Pet.all.page(params[:page]).per(10)
+
+     #ビューからの指示を受けるための名前を定義
+    if params[:latest]
+     @pets = Pet.latest
+    elsif params[:old]
+     @pets = Pet.old
+    else
+     @pets = Pet.all
+    end
+
   end
 
   def create

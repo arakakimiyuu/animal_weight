@@ -13,6 +13,10 @@
         <% end %>
         から
      </div>
+     <div>
+       <%= link_to '新しい順', posts_path(latest: "true") %>
+       |<%= link_to '古い順', posts_path(old: "true") %>
+     </div>
      <table class="table">
       <thead>
        <tr>
@@ -32,6 +36,7 @@
             <%= render 'public/posts/btn', post: post %>
            </td>
            <td><%= link_to "#{post.comments.count} コメント数", post_path(post.id) %></td>
+           <td><%= post.created_at.to_s(:datetime_jp) %></td>
           </tr>
         <% end %>
       </tbody>

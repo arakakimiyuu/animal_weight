@@ -40,4 +40,10 @@ class Pet < ApplicationRecord
   #enum の定義
   enum gender: { male: 0, female: 1, unknown: 2 }
 
+   #ソート機能
+  scope :latest, -> {order(created_at: :desc)}  #desc・・・昇順
+  scope :old, -> {order(created_at: :asc)} #asc・・・降順
+  #orderデータの取り出し
+  #Latest,oid任意の名前で定義する
+
 end

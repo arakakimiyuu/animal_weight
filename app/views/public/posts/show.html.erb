@@ -27,11 +27,9 @@
        <td>フード量</td>
        <td><%= @post.amount_food %></td>
       </tr>
-      <tr>
        <td id="btn_">
         <%= render 'public/posts/btn', post: @post %>
        </td>
-      </tr>
        <td class="d-flex justify-content-center">
         <% if @post.customer == current_customer %>
          <%= link_to "編集する", edit_post_path, class: "btn btn-success" %>
@@ -45,6 +43,11 @@
      </table>
     </div>
     <div class="col-6">
+     <%= render 'layouts/errors', obj: @comment %>
+     <div>
+       <%= link_to '新しい順', post_path(latest: "true") %>
+       |<%= link_to '古い順', post_path(old: "true") %>
+     </div>
       <table class="new-comment">
        <div id="comment-post">
         <%= render 'public/posts/comment', post: @post %>

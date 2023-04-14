@@ -8,10 +8,14 @@
       <div class="col-10 offset-1">
         <div class="d-flex justify-content-end">
         新規投稿は
-        <%= link_to new_pet_path do %>
+        <%= link_to new_post_path do %>
           こちら
         <% end %>
         から
+     </div>
+     <div>
+       <%= link_to '新しい順', customers_mypost_path(latest: "true") %>
+       |<%= link_to '古い順', customers_mypost_path(old: "true") %>
      </div>
      <table class="table">
       <thead>
@@ -32,6 +36,7 @@
             <%= render 'public/posts/btn', post: post %>
            </td>
            <td><%= link_to "#{post.comments.count} コメント数", post_path(post.id) %></td>
+           <td><%= post.created_at.to_s(:datetime_jp) %></td>
           </tr>
         <% end %>
       </tbody>
