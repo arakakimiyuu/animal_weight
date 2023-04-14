@@ -32,8 +32,27 @@ ja: # 日本語の設定を行う
         female: "メス"
         unknown: "不明"
 
+  errors:
+    messages:
+      accepted: を受諾してください
+      blank: を入力してください
+
   activerecord:
     attributes:
-      admin:
-        customer:
-          name: "名前"
+      customer:
+        name: "名前"
+      post:
+        pet: "動物の種類"
+        date: "日付"
+        weight: "体重"
+        feed: "餌の種類"
+        amount_food: "餌の量"
+      pet:
+          image: "動物の画像"
+          pet_name: "ペット名"
+          pet_type: "動物の種類"
+          pet_kind: "動物の品種"
+          gender: "性別"
+          color: "体色"
+          personality: "性格"
+          birth_date: "生年月日"
