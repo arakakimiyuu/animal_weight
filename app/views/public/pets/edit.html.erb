@@ -1,7 +1,11 @@
 <div class='container px-5 px-0'>
-  <div class="row pt-5">
-    <div class="col-md-6 offset-md-3">
-      <h2>ペット登録編集</h2>
+  <div class="row">
+    <div class="col-8">
+      <h2 class="py-5">ペット登録編集</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 offset-md-3">
       <%= render 'layouts/errors', obj: @pet %>
         <%= form_with model: @pet, url: pet_path, method: :patch, local: true do |f| %>
             <%= f.label :動物画像 %>
@@ -26,5 +30,6 @@
             </div>
         <% end %>
     </div>
+   </div>
   </div>
 </div>

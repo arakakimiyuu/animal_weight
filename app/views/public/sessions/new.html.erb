@@ -1,37 +1,44 @@
 <div class='container px-5 px-0'>
-  <h2 class="pt-5">ログイン</h2>
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <h5>会員の方はこちらからログイン</h5>
-   <table class="table">
-     <tr>
-      <div class="field">
-         <th><%= f.label :名前 %></th>
-         <th><%= f.text_field :name, autofocus: true, autocomplete: "name" %></th>
-      </div>
-    </tr>
-    <tr>
-      <div class="field">
-        <th><%= f.label :パスワード %></th>
-        <th><%= f.password_field :password, autocomplete: "current-password" %></th>
-      </div>
-    </tr>
-    <tr>
-      <th>
-        <% if devise_mapping.rememberable? %>
-          <div class="field">
-            <%= f.check_box :remember_me %>
-            <%= f.label :remember_me %>
-          </div>
-        <% end %>
-      </th>
-    </tr>
-  </table>
-
-    <div class="actions">
-      <%= f.submit "ログイン", class: "btn btn-info" %>
+  <div class="row">
+    <div class="col-8">
+      <h2 class="py-5">ログイン</h2>
     </div>
-  <% end %>
+  </div>
+  <div class="row">
+    <div class="col-8 offset-1">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <h5>会員の方はこちらからログイン</h5>
+       <table class="table">
+         <tr>
+          <div class="field">
+             <th><%= f.label :名前 %></th>
+             <th><%= f.text_field :name, autofocus: true, autocomplete: "name" %></th>
+          </div>
+        </tr>
+        <tr>
+          <div class="field">
+            <th><%= f.label :パスワード %></th>
+            <th><%= f.password_field :password, autocomplete: "current-password" %></th>
+          </div>
+        </tr>
+        <tr>
+          <th>
+            <% if devise_mapping.rememberable? %>
+              <div class="field">
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+              </div>
+            <% end %>
+          </th>
+        </tr>
+      </table>
 
-  <h5>会員登録がお済でない方</h5>
-  <%= render "public/shared/links" %>
+        <div class="actions">
+          <%= f.submit "ログイン", class: "btn btn-info" %>
+        </div>
+      <% end %>
+
+    <h5>会員登録がお済でない方</h5>
+    <%= render "public/shared/links" %>
+  </div>
 </div>

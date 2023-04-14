@@ -1,36 +1,28 @@
 <div class='container px-5 px-0'>
-  <div class="row pt-5">
-    <div class="col-md-4 offset-md-4">
-      <h2>新規投稿</h2>
-      <%= render 'layouts/errors', obj: @post %>
-        <%= form_with model: @post, url: posts_path, method: :post, local: true do |f| %>
-            <%= f.label :動物の種類 %>
-            <%= f.collection_select :pet_id, Pet.all, :id, :pet_type, { include_blank: '選択してください'}, { class: 'form-control'} %><br>
-            <diV class="form-group">
-             <%= f.label :日付 %>
-             <%= f.datetime_field :date %>
-            </diV>
-            <diV class="form-inline">
-             <%= f.label :体重 %>
-
-            <div class="pl-3">
-             <%= f.text_field :weight, class: "form-control", placeholder: "例) 6kg" %>
-            </div>
-            </div>
-            <diV class="form-group pt-2">
-             <%= f.label :フード種類 %>
-             <%= f.text_field :feed, class: "form-control", placeholder: "例) 缶詰め" %>
-            </div>
-            <diV class="form-inline">
-             <%= f.label :フード量 %>
-            <div class="pl-3">
-             <%= f.text_field :amount_food, class: "form-control", placeholder: "例) 50g" %>
-            </div>
-            </div>
-            <div class="pt-3">
-             <%= f.submit '新規登録', class: 'btn btn-success' %>
-            </div>
+  <div class="row">
+    <div class="col-8">
+      <h2 class="py-5">新規投稿</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4 offset-4">
+        <%= render 'layouts/errors', obj: @post %>
+         <%= form_with model: @post, url: posts_path, method: :post, local: true do |f| %>
+           <%= f.label :動物の種類 %>
+           <%= f.collection_select :pet_id, Pet.all, :id, :pet_type, { include_blank: '選択してください'}, { class: 'form-control'} %><br>
+           <%= f.label :日付 %>
+           <%= f.datetime_field :date %><br>
+           <%= f.label :体重 %>
+           <%= f.text_field :weight, class: "form-control", placeholder: "例) 6kg" %>
+           <%= f.label :フード種類 %>
+           <%= f.text_field :feed, class: "form-control", placeholder: "例) 缶詰め" %>
+           <%= f.label :フード量 %>
+           <%= f.text_field :amount_food, class: "form-control", placeholder: "例) 50g" %>
+           <div class="pt-3">
+            <%= f.submit '新規登録', class: 'btn btn-success' %>
+           </div>
         <% end %>
     </div>
+   </div>
   </div>
 </div>
