@@ -27,7 +27,7 @@
        <td>フード量</td>
        <td><%= @post.amount_food %></td>
       </tr>
-       <td id="btn_">
+       <td id="btn_<%= @post.id %>">
         <%= render 'public/posts/btn', post: @post %>
        </td>
        <td class="d-flex justify-content-center">
@@ -50,7 +50,7 @@
      </div>
       <table class="new-comment">
        <div id="comment-post">
-        <%= render 'public/posts/comment', post: @post %>
+        <%= render 'public/posts/comment', post: @post,comments:@comments %>
        </div>
       </table>
       <div id="textarea">
