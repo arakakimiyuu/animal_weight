@@ -39,6 +39,12 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    #グラフ化用の変数
+    @posts = Post.where(pet_id: @post.pet.id)
+    # maximumメソッド: レシーバーの中で引数が最大の値を返す
+    # roundメソッド: 数字を引数で指定の小数点位置で四捨五入した整数
+    #/ /正規表現 #gsub 文字列から特定の文字に変換
+    @max_weight = (@posts.maximum(:weight).gsub(/[^0-9.]/, '').to_f*1.1).round #最大の体重がその1.1倍表示できる
     @comment = Comment.new
     @all_comments = Comment.all
      #ソート機能
@@ -50,7 +56,6 @@ class Public::PostsController < ApplicationController
     else
      @comments = Comment.where(post_id: @post.id).all.page(params[:page]).per(10)
     end
-    # @comments = @post.comments.page(params[:page]).per(10)
   end
 
   def edit

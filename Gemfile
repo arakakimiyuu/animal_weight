@@ -59,3 +59,5 @@ gem 'devise'
 gem "enum_help"
 gem 'devise-i18n' #deviseを日本語化
 gem 'jquery-rails' #jQueryの読み込み
+gem "chartkick" #グラフ化
+gem 'groupdate' #日時を表示したいため
