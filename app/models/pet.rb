@@ -7,8 +7,6 @@ class Pet < ApplicationRecord
   validates :pet_name, presence: true
   validates :pet_type, presence: true
   validates :pet_kind, presence: true
-  validates :gender, presence: true
-  validates :birth_date, acceptance: true
   validates :color, presence: true
   validates :personality, presence: true
 
@@ -39,11 +37,5 @@ class Pet < ApplicationRecord
 
   #enum の定義
   enum gender: { male: 0, female: 1, unknown: 2 }
-
-   #ソート機能
-  scope :latest, -> {order(created_at: :desc)}  #desc・・・昇順
-  scope :old, -> {order(created_at: :asc)} #asc・・・降順
-  #orderデータの取り出し
-  #Latest,oid任意の名前で定義する
 
 end

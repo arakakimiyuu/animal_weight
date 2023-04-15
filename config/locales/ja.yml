@@ -37,7 +37,14 @@ ja: # 日本語の設定を行う
       accepted: を受諾してください
       blank: を入力してください
 
+
   activerecord:
+    errors:
+      models:
+        post:
+          attributes:
+            pet:
+              required: "を入力してください"
     attributes:
       customer:
         name: "名前"

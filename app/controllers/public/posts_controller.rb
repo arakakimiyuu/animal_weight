@@ -14,16 +14,15 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    #ビューからの指示を受けるための名前を定義
+    #ソート機能
     if params[:latest]
-     @posts = Post.latest
+    #orderデータの取り出し
+     @posts = Post.page(params[:page]).per(10).order(created_at: :DESC) #desc・・・昇順
     elsif params[:old]
-     @posts = Post.old
+     @posts = Post.page(params[:page]).per(10).order(create_at: :ASC) #asc・・・降順
     else
-     @posts = Post.all
+     @posts = Post.all.page(params[:page]).per(10)
     end
-
-    @posts = Post.all.page(params[:page]).per(10)
   end
 
   def create
@@ -41,7 +40,17 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
-    @comments = @post.comments.page(params[:page]).per(10)
+    @all_comments = Comment.all
+     #ソート機能
+    if params[:latest]
+    #orderデータの取り出し
+     @comments = @all_comments.where(post_id: @post.id).page(params[:page]).per(10).order(created_at: :DESC) #desc・・・昇順
+    elsif params[:old]
+     @comments = @all_comments.where(post_id: @post.id).page(params[:page]).per(10).order(create_at: :ASC) #asc・・・降順
+    else
+     @comments = Comment.where(post_id: @post.id).all.page(params[:page]).per(10)
+    end
+    # @comments = @post.comments.page(params[:page]).per(10)
   end
 
   def edit

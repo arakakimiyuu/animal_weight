@@ -9,15 +9,15 @@ class Public::PetsController < ApplicationController
   end
 
   def index
-    @pets = Pet.all.page(params[:page]).per(10)
-
-     #ビューからの指示を受けるための名前を定義
+    # @pets = Pet.all.page(params[:page]).per(10)
+    #ソート機能
     if params[:latest]
-     @pets = Pet.latest
+    #orderデータの取り出し
+     @pets = Pet.page(params[:page]).per(10).order(created_at: :DESC) #desc・・・昇順
     elsif params[:old]
-     @pets = Pet.old
+     @pets = Pet.page(params[:page]).per(10).order(create_at: :ASC) #asc・・・降順
     else
-     @pets = Pet.all
+     @pets = Pet.all.page(params[:page]).per(10)
     end
 
   end

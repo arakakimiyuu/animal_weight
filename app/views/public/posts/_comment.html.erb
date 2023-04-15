@@ -1,7 +1,7 @@
          <% comments.each do |comment| %>
           <tr>
               <td>
-               <%= comment.post.created_at.to_s(:datetime_jp) %> <%#to_sメソッドを呼び出して、引数にフォーマット名を指定 %>
+               <%= comment.created_at.to_s(:datetime_jp) %> <%#to_sメソッドを呼び出して、引数にフォーマット名を指定 %>
                <div><%= comment.customer.name %></div>
               </td>
               <td class="pl-3">

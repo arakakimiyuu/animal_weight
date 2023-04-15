@@ -32,7 +32,7 @@
            <td><%= post.date %></td>
            <td><%= link_to post.pet.pet_type, post_path(post.id) %></td>
            <td><%= post.weight %></td>
-           <td>
+           <td id="btn_<%= post.id %>">
             <%= render 'public/posts/btn', post: post %>
            </td>
            <td><%= link_to "#{post.comments.count} コメント数", post_path(post.id) %></td>

@@ -13,21 +13,31 @@ class Public::CustomersController < ApplicationController
   def mypost #投稿履歴一覧
     @customer = current_customer
 
-    #ビューからの指示を受けるための名前を定義
+    #ソート機能
     if params[:latest]
-     @customers = Customer.latest
+    #orderデータの取り出し
+     @posts = Post.where(customer_id: @customer.id).page(params[:page]).per(10).order(created_at: :DESC) #desc・・・昇順
     elsif params[:old]
-     @customers = Customer.old
+     @posts = Post.where(customer_id: @customer.id).page(params[:page]).per(10).order(create_at: :ASC) #asc・・・降順
     else
-     @customers = Customer.all
+     @posts = Post.where(customer_id: @customer.id).all.page(params[:page]).per(10)
     end
 
-    @posts = Post.where(customer_id: @customer.id).page(params[:page]).per(10)
+    # @posts = Post.where(customer_id: @customer.id).page(params[:page]).per(10)
   end
 
   def mypet #ペット登録履歴一覧
     @customer = current_customer
-    @pets = Pet.where(customer_id: @customer.id).page(params[:page]).per(10)
+    #ソート機能
+    if params[:latest]
+    #orderデータの取り出し
+     @pets = Pet.where(customer_id: @customer.id).page(params[:page]).per(10).order(created_at: :DESC) #desc・・・昇順
+    elsif params[:old]
+     @pets = Pet.where(customer_id: @customer.id).page(params[:page]).per(10).order(create_at: :ASC) #asc・・・降順
+    else
+     @pets = Pet.where(customer_id: @customer.id).all.page(params[:page]).per(10)
+    end
+    # @pets = Pet.where(customer_id: @customer.id).page(params[:page]).per(10)
   end
 
   def show
