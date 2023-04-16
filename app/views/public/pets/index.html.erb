@@ -37,12 +37,12 @@
               <td><%= pet.birth_date %></td>
               <td><%= pet.gender_i18n %></td>
               <td><%= pet.created_at.to_s(:datetime_jp) %></td>
+            </tr>
           <% end %>
         </tbody>
       </table>
       </div>
     </div>
-  </div>
   <div class="d-flex justify-content-center">
  　 <%= paginate @pets %>
   </div>

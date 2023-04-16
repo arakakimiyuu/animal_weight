@@ -9,7 +9,6 @@ class Public::PetsController < ApplicationController
   end
 
   def index
-    # @pets = Pet.all.page(params[:page]).per(10)
     #ソート機能
     if params[:latest]
     #orderデータの取り出し

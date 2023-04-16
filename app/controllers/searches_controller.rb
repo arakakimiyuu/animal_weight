@@ -10,9 +10,9 @@ class SearchesController < ApplicationController
     @range = params[:range]
 
     if @range == "Pet"
-      @pets = Pet.looks(params[:search], params[:word])
+      @pets = Pet.looks(params[:search], params[:word]).page(params[:page]).per(10)
     else
-      @posts = Post.looks(params[:search], params[:word])
+      @posts = Post.looks(params[:search], params[:word]).page(params[:page]).per(10)
     end
   end
 end

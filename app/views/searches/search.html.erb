@@ -1,46 +1,80 @@
-<h2>検索結果</h2>
-
-
-  <!--検索対象モデルがPetの時 -->
-  <% if @range == "Pet" %>
-    <% if @pets.blank? %>
-      <h3 class="d-flex justify-content-center">見つかりませんでした。</h3>
-    <% else %>
-      <table class="table table-hover table-inverse">
-        <tbody>
-          <% @pets.each do |pet| %>
+<div class='container px-5 px-sm-0'>
+  <div class="row">
+    <div class="col-8">
+      <h2 class="py-5">検索結果</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-10 offset-1">
+    <!--検索対象モデルがPetの時 -->
+    <% if @range == "Pet" %>
+      <% if @pets.blank? %>
+        <h3 class="d-flex justify-content-center">見つかりませんでした。</h3>
+      <% else %>
+        <table class="table table-hover table-inverse">
+          <thead>
             <tr>
-              <td><%= pet.pet_name %></td>
-              <td><%= pet.pet_type %></td>
-              <td><%= pet.pet_kind %></td>
-              <td><%= pet.gender_i18n %></td>
-              <td><%= pet.color %></td>
-              <td><%= pet.birth_date %></td>
-              <td><%= pet.personality %></td>
+              <th>ペット名</th>
+              <th>動物の種類</th>
+              <th>動物の品種</th>
+              <th>性別</th>
+              <th>体色</th>
+              <th>生年月日</th>
+              <th colspan="6"></th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            <% @pets.each do |pet| %>
+              <tr>
+                <td><%= pet.pet_name %></td>
+                <td><%= link_to  pet.pet_type, pet_path(pet.id) %></td>
+                <td><%= pet.pet_kind %></td>
+                <td><%= pet.gender_i18n %></td>
+                <td><%= pet.color %></td>
+                <td><%= pet.birth_date %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
+      <div class="d-flex justify-content-center">
+       <%= paginate @pets %>
+      </div>
+    <!--検索対象モデルがPetではない時(= 検索対象モデルがPostの時) -->
+    <% elsif @range == "Post" %>
+      <% if @posts.blank? %>
+        <h3 class="d-flex justify-content-center">見つかりませんでした。</h3>
+      <% else %>
+        <table class="table table-hover table-inverse">
+          <thead>
+           <tr>
+            <th>日付</th>
+            <th>動物の種類</th>
+            <th>体重</th>
+            <th>フード種類</th>
+            <th>フード量</th>
+            <th colspan="5"></th>
+           </tr>
+          </thead>
+          <tbody>
+            <% @posts.each do |post| %>
+              <tr>
+                <td><%= post.date %></td>
+                <td><%= link_to post.feed, post_path(post.id) %></td>
+                <td><%= post.weight %></td>
+                <td><%= post.feed %></td>
+                <td><%= post.amount_food %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+    </div>
+  </div>
+      <% end %>
+    <div class="d-flex justify-content-center">
+     <%= paginate @posts %>
+    </div>
     <% end %>
-  <!--検索対象モデルがPetではない時(= 検索対象モデルがPostの時) -->
-  <% elsif @range == "Post" %>
-    <% if @posts.blank? %>
-      <h3 class="d-flex justify-content-center">見つかりませんでした。</h3>
-    <% else %>
-      <table class="table table-hover table-inverse">
-        <tbody>
-          <% @posts.each do |post| %>
-            <tr>
-              <td><%= post.date %></td>
-              <td><%= post.feed %></td>
-              <td><%= post.weight %></td>
-              <td><%= post.amount_food %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    <% end %>
-  <% end %>
-
+</div>
 
 
