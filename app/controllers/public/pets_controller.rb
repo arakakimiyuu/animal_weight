@@ -13,11 +13,11 @@ class Public::PetsController < ApplicationController
     #ソート機能
     if params[:latest]
     #orderデータの取り出し
-     @pets = Pet.page(params[:page]).per(10).order(created_at: :DESC) #desc・・・昇順
+     @pets = Pet.page(params[:page]).per(5).order(created_at: :DESC) #desc・・・昇順
     elsif params[:old]
-     @pets = Pet.page(params[:page]).per(10).order(create_at: :ASC) #asc・・・降順
+     @pets = Pet.page(params[:page]).per(5).order(create_at: :ASC) #asc・・・降順
     else
-     @pets = Pet.all.page(params[:page]).per(10)
+     @pets = Pet.all.page(params[:page]).per(5)
     end
 
   end

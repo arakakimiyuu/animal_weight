@@ -63,6 +63,5 @@
        </div>
     </div>
    </div>
-   <%#= @max_weight.round() %>
    <%= line_chart @posts.group_by_day(:date, series: false).average(:weight),height:"400px", xtitle: "日", ytitle: "体重", min: 0, max: @max_weight, curve: false %>
  </div>
