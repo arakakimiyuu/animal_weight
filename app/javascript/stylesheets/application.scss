@@ -1,2 +1,14 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+.container{
+  max-width:1240px;
+}
+
+.nav-color{
+ background-color:#c8e3df;
+}
+
+.font-color{
+ color:#559092;
+}
