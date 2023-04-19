@@ -54,7 +54,7 @@ class Public::PostsController < ApplicationController
     elsif params[:old]
      @comments = @all_comments.where(post_id: @post.id).page(params[:page]).per(10).order(create_at: :ASC) #asc・・・降順
     else
-     @comments = Comment.where(post_id: @post.id).all.page(params[:page]).per(10)
+     @comments = Comment.where(post_id: @post.id).page(params[:page]).per(10)
     end
   end
 

@@ -20,7 +20,7 @@ class Public::CustomersController < ApplicationController
     elsif params[:old]
      @posts = Post.where(customer_id: @customer.id).page(params[:page]).per(10).order(create_at: :ASC) #asc・・・降順
     else
-     @posts = Post.where(customer_id: @customer.id).all.page(params[:page]).per(10)
+     @posts = Post.where(customer_id: @customer.id).page(params[:page]).per(10)
     end
 
     # @posts = Post.where(customer_id: @customer.id).page(params[:page]).per(10)
@@ -35,7 +35,7 @@ class Public::CustomersController < ApplicationController
     elsif params[:old]
      @pets = Pet.where(customer_id: @customer.id).page(params[:page]).per(10).order(create_at: :ASC) #asc・・・降順
     else
-     @pets = Pet.where(customer_id: @customer.id).all.page(params[:page]).per(10)
+     @pets = Pet.where(customer_id: @customer.id).page(params[:page]).per(10)
     end
     # @pets = Pet.where(customer_id: @customer.id).page(params[:page]).per(10)
   end

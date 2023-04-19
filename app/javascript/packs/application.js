@@ -4,7 +4,7 @@
 // that code so it'll be compiled.
 
 import Rails from "@rails/ujs"
-import Turbolinks from "turbolinks"
+//import Turbolinks from "turbolinks" #非同期通信化の反応が悪いためコメントアウト
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
@@ -17,5 +17,5 @@ import '@fortawesome/fontawesome-free/js/all'
 import "chartkick/chart.js"
 
 Rails.start()
-Turbolinks.start()
+//Turbolinks.start()　#非同期通信化の反応が悪いためコメントアウト
 ActiveStorage.start()

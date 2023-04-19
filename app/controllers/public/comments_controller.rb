@@ -17,8 +17,7 @@ class Public::CommentsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:post_id])
-    comment = Comment.find(params[:id])
-    comment.destroy
+    Comment.find_by(id: params[:id], post_id: params[:post_id]).destroy
 
     @comments = @post.comments.page(params[:page]).per(10)
     render:comment
