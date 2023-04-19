@@ -53,6 +53,7 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
     if @customer.update(customer_params)
       redirect_to customers_mypage_path
+      flash[:notice] = "変更を保存しました。"
     else
       render:edit
     end
