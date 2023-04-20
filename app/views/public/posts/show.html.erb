@@ -12,6 +12,14 @@
        <td><%= @post.date %></td>
       </tr>
       <tr>
+       <td>ユーザー名</td>
+       <td><%= @post.customer.name %></td>
+      </tr>
+      <tr>
+       <td>ペット名</td>
+       <td><%= @post.pet.pet_name %></td>
+      </tr>
+      <tr>
        <td>動物の種類</td>
        <td><%= @post.pet.pet_type %></td>
       </tr>

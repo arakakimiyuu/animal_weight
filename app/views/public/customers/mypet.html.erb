@@ -21,6 +21,7 @@
         <thead>
           <tr>
             <th>ペットID</th>
+            <th>ユーザー名</th>
             <th>ペット名</th>
             <th>動物の種類</th>
             <th>生年月日</th>
@@ -32,6 +33,7 @@
           <% @pets.each do |pet| %>
             <tr>
               <td><%= pet.id %></td>
+              <td><%= pet.customer.name %></td>
               <td><%= link_to pet.pet_name, pet_path(pet.id) %></td>
               <td><%= pet.pet_type %></td>
               <td><%= pet.birth_date %></td>

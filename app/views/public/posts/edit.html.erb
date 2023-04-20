@@ -5,7 +5,8 @@
       <%= render 'layouts/errors', obj: @post %>
         <%= form_with model: @post, url: post_path(@post), method: :patch, local: true do |f| %>
            <%= f.label :動物の種類 %>
-           <%= f.collection_select :pet_id, Pet.all, :id, :pet_type, { include_blank: '選択してください'}, { class: 'form-control'} %><br>
+           <%#select_typeはpet.rbのデーターを取ってきた %>
+           <%= f.collection_select :pet_id, current_customer.pets, :id, :select_type, { include_blank: '選択してください'}, { class: 'form-control'} %><br>
            <%= f.label :日付 %>
            <%= f.datetime_field :date %><br>
            <%= f.label :体重 %>
