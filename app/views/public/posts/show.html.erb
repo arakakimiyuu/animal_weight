@@ -63,5 +63,6 @@
        </div>
     </div>
    </div>
+   <%#series: falseを記述しないと、データが無い日付に０がカウントされる %>
    <%= line_chart @posts.group_by_day(:date, range: 1.weeks.ago..Time.now, series: false).average(:weight),height:"400px", xtitle: "日", ytitle: "体重", min: 0, max: @max_weight, curve: false %>
  </div>

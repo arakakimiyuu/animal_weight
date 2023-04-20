@@ -2,10 +2,13 @@ class Public::CommentsController < ApplicationController
 
   #編集,更新,削除を別の会員が変えないようにするための記述
   before_action :ensure_current_customer, only: [:destroy]
-  #ゲストユーザーでログインできても作成、削除はできない
-  before_action :reject_guest_customer, only: [:create, :destroy]
+
 
   def create
+    if current_customer.guest?
+      render :top
+      return
+    end
     @post = Post.find(params[:post_id])
     comment = current_customer.comments.new(comment_params)
     comment.post_id = @post.id
