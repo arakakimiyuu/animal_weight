@@ -10,6 +10,10 @@ class Pet < ApplicationRecord
   validates :color, presence: true
   validates :personality, presence: true
 
+  #動物の種類＋ペット名
+  def select_type
+    pet_type + ' ' + pet_name
+  end
 
   #画像
    def get_profile_image(width, height)
