@@ -3,6 +3,12 @@ class Public::CommentsController < ApplicationController
   #編集,更新,削除を別の会員が変えないようにするための記述
   before_action :ensure_current_customer, only: [:destroy]
 
+  def index
+    @post = Post.find(params[:post_id])
+    @comments = @post.comments.page(params[:page]).per(5)
+    render:comment
+
+  end
 
   def create
     if current_customer.guest?
@@ -14,16 +20,16 @@ class Public::CommentsController < ApplicationController
     comment.post_id = @post.id
 
     comment.save
-    @comments = @post.comments.page(params[:page]).per(10)
-    render:comment
+#    @comments = @post.comments.page(params[:page]).per(5)
+    render:index
   end
 
   def destroy
     @post = Post.find(params[:post_id])
     Comment.find_by(id: params[:id], post_id: params[:post_id]).destroy
 
-    @comments = @post.comments.page(params[:page]).per(10)
-    render:comment
+ #   @comments = @post.comments.page(params[:page]).per(5)
+    render:index
   end
 
   #投稿者 = 現在ログインしている会員でない場合
