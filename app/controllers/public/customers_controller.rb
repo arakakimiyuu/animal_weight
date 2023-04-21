@@ -22,8 +22,6 @@ class Public::CustomersController < ApplicationController
     else
      @posts = Post.where(customer_id: @customer.id).page(params[:page]).per(10)
     end
-
-    # @posts = Post.where(customer_id: @customer.id).page(params[:page]).per(10)
   end
 
   def mypet #ペット登録履歴一覧
@@ -37,12 +35,10 @@ class Public::CustomersController < ApplicationController
     else
      @pets = Pet.where(customer_id: @customer.id).page(params[:page]).per(10)
     end
-    # @pets = Pet.where(customer_id: @customer.id).page(params[:page]).per(10)
   end
 
   def show
     @customer = current_customer
-
   end
 
   def edit

@@ -11,6 +11,7 @@ class Public::CommentsController < ApplicationController
   end
 
   def create
+    #ゲストユーザーがいいねを押すとtopページに遷移
     if current_customer.guest?
       render :top
       return

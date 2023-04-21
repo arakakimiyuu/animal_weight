@@ -66,20 +66,18 @@
       </div>
     </div>
    </div>
-   <%#series: falseを記述しないと、データが無い日付に０がカウントされる %>
+   <%#グラフの記述 series: falseを記述しないと、データが無い日付に０がカウントされる %>
    <%= line_chart @posts.group_by_day(:date, range: (@post.date - 4.week)..@post.date, series: false).average(:weight),height:"400px", xtitle: "日", ytitle: "体重", min: 0, max: @max_weight, curve: false %>
  </div>
  <script>
- function comment_index(post_id){
-  $.ajax({
-    url: '/posts/' + post_id + '/comments',
-    dataType: 'script',
-  })
-   .done()
-   .fail()
-   .always();
- }
- comment_index(<%= @post.id %>);
-
-
+  function comment_index(post_id){
+    $.ajax({
+      url: '/posts/' + post_id + '/comments',
+      dataType: 'script',
+    })
+     .done()
+     .fail()
+     .always();
+   }
+  comment_index(<%= @post.id %>);
  </script>

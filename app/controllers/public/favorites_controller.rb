@@ -1,7 +1,7 @@
 class Public::FavoritesController < ApplicationController
 
-
   def create
+    #ゲストユーザーがいいねを押すとtopページに遷移
     if current_customer.guest?
       render :top
       return
