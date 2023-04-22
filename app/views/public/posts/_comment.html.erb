@@ -1,21 +1,19 @@
-      <table class="new-comment">
          <% comments.each do |comment| %>
-          <tr>
-              <td>
+          <div class="row">
+              <div class="col-5 mr-0 pr-0 pl-0">
                <%= comment.created_at.to_s(:datetime_jp) %> <%#to_sメソッドを呼び出して、引数にフォーマット名を指定 %>
                <div><%= comment.customer.name %></div>
-              </td>
-              <td class="pl-3">
+              </div>
+              <div class="col-5 mr-0 pr-0 pl-0">
                <%= comment.comment %>
-              </td>
-              <td class="pl-3">
+              </div>
+              <div class="col-2 mr-0 pr-0 pl-0">
               <% if comment.customer == current_customer %>  <!--非同期通信化のためremote: trueを追加-->
                 <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, data: { confirm: "本当に消しますか？" }, remote: true, class: "btn btn-danger" %>
               <% end %>
-              </td>
-          </tr>
+              </div>
+          </div>
          <% end %>
-      </table>
-      <div class="d-flex justify-content-center">
-       <%= paginate comments, remote: true %>
-      </div>
+
+
+

@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     resources:posts, only: [:new, :index, :create, :show, :edit, :update, :destroy] do
      #get 'posts/mypage'
      resource :favorites, only: [:create, :destroy]
-     resources:comments, only:[:index,:create, :destroy]
+     resources:comments, only:[:create, :destroy]
     end
     get 'customers/mypage/edit' => 'customers#edit'
     patch 'customers/mypage' => 'customers#update'

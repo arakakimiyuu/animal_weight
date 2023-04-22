@@ -39,12 +39,42 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+
     #グラフ化用の変数
     @posts = Post.where(pet_id: @post.pet.id)
+    #今日のデータ
+    today = Date.current
+
+    if params[:post].present?
+      if params[:post][:date].present?
+        today = params[:post][:date].to_date #ago,sinceを使っているため日付型に変更
+      end
+      #先月のグラフを出す記述
+      if params[:post][:range] == 'one_month'
+        @posts = Post.where(pet_id: @post.pet.id).where(date: today.ago(1.month)..today)
+      #3ヶ月前のグラフを出す記述
+      elsif  params[:post][:range] == 'three_month'
+        @posts = Post.where(pet_id: @post.pet.id).where(date: today.ago(3.month)..today)
+      #1年前のグラフを出す記述
+      elsif  params[:post][:range] == 'one_year'
+        @posts = Post.where(pet_id: @post.pet.id).where(date: today.ago(1.year)..today)
+      else
+        # @posts = Post.where(pet_id: @post.pet.id)のデータが出る
+      end
+      #範囲の設定
+      @range = params[:post][:range]
+    end
+    #来月
+    @next_date = today.since(1.month)
+    #先月
+    @prev_date = today.ago(1.month)
     # maximumメソッド: レシーバーの中で引数が最大の値を返す
     # roundメソッド: 数字を引数で指定の小数点位置で四捨五入した整数
     #/ /正規表現 #gsub 文字列から特定の文字に変換
-    @max_weight = (@posts.maximum(:weight).gsub(/[^0-9.]/, '').to_f*1.1).round() #最大の体重がその1.1倍表示できる
+    #三項演算子を使った記述 postの中身が空の場合dataは0空ではない場合は最大値を表示
+    @max_weight = @posts.empty? ? 0 : (@posts.maximum(:weight).gsub(/[^0-9.]/, '').to_f*1.1).round() #最大の体重がその1.1倍表示できる
+
+    #コメント
     @comment = Comment.new
     @all_comments = Comment.all
      #ソート機能
@@ -56,6 +86,7 @@ class Public::PostsController < ApplicationController
     else
      @comments = Comment.where(post_id: @post.id).page(params[:page]).per(10)
     end
+    
   end
 
   def edit
