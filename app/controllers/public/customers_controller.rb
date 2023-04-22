@@ -18,7 +18,7 @@ class Public::CustomersController < ApplicationController
     #orderデータの取り出し
      @posts = Post.where(customer_id: @customer.id).page(params[:page]).per(10).order(created_at: :DESC) #desc・・・昇順
     elsif params[:old]
-     @posts = Post.where(customer_id: @customer.id).page(params[:page]).per(10).order(create_at: :ASC) #asc・・・降順
+     @posts = Post.where(customer_id: @customer.id).page(params[:page]).per(10).order(created_at: :ASC) #asc・・・降順
     else
      @posts = Post.where(customer_id: @customer.id).page(params[:page]).per(10)
     end
@@ -31,7 +31,7 @@ class Public::CustomersController < ApplicationController
     #orderデータの取り出し
      @pets = Pet.where(customer_id: @customer.id).page(params[:page]).per(10).order(created_at: :DESC) #desc・・・昇順
     elsif params[:old]
-     @pets = Pet.where(customer_id: @customer.id).page(params[:page]).per(10).order(create_at: :ASC) #asc・・・降順
+     @pets = Pet.where(customer_id: @customer.id).page(params[:page]).per(10).order(created_at: :ASC) #asc・・・降順
     else
      @pets = Pet.where(customer_id: @customer.id).page(params[:page]).per(10)
     end

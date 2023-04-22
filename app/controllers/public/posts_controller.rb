@@ -19,7 +19,7 @@ class Public::PostsController < ApplicationController
     #orderデータの取り出し
      @posts = Post.page(params[:page]).per(10).order(created_at: :DESC) #desc・・・昇順
     elsif params[:old]
-     @posts = Post.page(params[:page]).per(10).order(create_at: :ASC) #asc・・・降順
+     @posts = Post.page(params[:page]).per(10).order(created_at: :ASC) #asc・・・降順
     else
      @posts = Post.all.page(params[:page]).per(10)
     end
@@ -46,6 +46,7 @@ class Public::PostsController < ApplicationController
     today = Date.current
 
     if params[:post].present?
+      #今日の日付の取得
       if params[:post][:date].present?
         today = params[:post][:date].to_date #ago,sinceを使っているため日付型に変更
       end
@@ -82,11 +83,11 @@ class Public::PostsController < ApplicationController
     #orderデータの取り出し
      @comments = @all_comments.where(post_id: @post.id).page(params[:page]).per(10).order(created_at: :DESC) #desc・・・昇順
     elsif params[:old]
-     @comments = @all_comments.where(post_id: @post.id).page(params[:page]).per(10).order(create_at: :ASC) #asc・・・降順
+     @comments = @all_comments.where(post_id: @post.id).page(params[:page]).per(10).order(created_at: :ASC) #asc・・・降順
     else
      @comments = Comment.where(post_id: @post.id).page(params[:page]).per(10)
     end
-    
+
   end
 
   def edit
