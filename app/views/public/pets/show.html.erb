@@ -36,9 +36,9 @@
       </tr>
       <tr>
        <td>性別</td>
-        <% if @pet.gender == true %>
+        <% if @pet.gender == "male" %>
           <td>オス</td>
-         <% elsif %>
+         <% elsif @pet.gender == "female"%>
          <td>メス</td>
          <% else %>
          <td>不明</td>

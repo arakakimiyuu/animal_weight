@@ -3,7 +3,7 @@ class Pet < ApplicationRecord
   has_one_attached :image
 
   #バリデーション
-  validates :image, presence: true
+  validates :image, presence: true, on: :create #新規登録の時だけバリデーションが反映される
   validates :pet_name, presence: true
   validates :pet_type, presence: true
   validates :pet_kind, presence: true
