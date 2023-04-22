@@ -71,7 +71,8 @@ class Public::CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:name, :is_delete)
+    #deviceの方に新規登録としてemailは、入っているが編集は入っていないのでいれる
+    params.require(:customer).permit(:name, :is_delete, :email)
   end
 
 end

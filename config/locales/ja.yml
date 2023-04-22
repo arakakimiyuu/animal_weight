@@ -45,9 +45,14 @@ ja: # 日本語の設定を行う
           attributes:
             pet:
               required: "を入力してください"
+        customer:
+          attributes:
+            email:
+              taken: "は既に存在します"
     attributes:
       customer:
         name: "名前"
+        email: "メールアドレス"
       post:
         pet: "動物の種類"
         date: "日付"
