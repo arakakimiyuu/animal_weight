@@ -31,7 +31,7 @@
 
 ## 設計書
 テーブル定義書
-https://docs.google.com/spreadsheets/d/12H6p6lmxm6THyiFNJagqg8RlNzJQxYbdzWLksnIbtKA/edit?usp=sharing
+https://docs.google.com/spreadsheets/d/1A547iJ_TOecifi7Bg7G4rWEI1nDWzc4Lb3fyOARCDm4/edit#gid=0<br>
 ER図
 https://drive.google.com/file/d/1IQbQI8twh7atUB_U3W580nrGMIpG37WD/view?usp=sharing
 
@@ -43,7 +43,7 @@ https://drive.google.com/file/d/1IQbQI8twh7atUB_U3W580nrGMIpG37WD/view?usp=shari
 ・投稿機能
 ・検索機能
 ・いいね機能
-・コメント機能
+・コメント機能<br>
 ・いいね、コメント機能の非同期化
 ・ソート機能
 ・グラフ化

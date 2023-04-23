@@ -44,7 +44,6 @@ class Public::PostsController < ApplicationController
     @posts = Post.where(pet_id: @post.pet.id)
     #今日のデータ
     today = Date.current
-
     if params[:post].present?
       #今日の日付の取得
       if params[:post][:date].present?
