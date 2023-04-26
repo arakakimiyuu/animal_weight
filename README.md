@@ -25,14 +25,18 @@
 ・今後飼うかもしれない動物の体重を見る時
 
 ## 使い方
-管理者、会員側それぞれログインはメールアドレスを【animal0401@gmail.com】、パスワードは【Animal0401】で使用出来ます。<br>
+会員側のログインは新規登録で入力された名前、パスワードを入力することで使用できます。<br>
+管理者のログインはメールアドレスを【animal0401@gmail.com】、パスワードは【Animal0401】で使用出来ます。<br>
 会員側の場合、新規作成で好きなアカウントを作成しても利用が可能です。投稿する前にペット登録をする必要があります。<br>
+投稿では動物の体重をグラフで確認することができます。<br>
+検索フォームでは動物の種類,餌の種類を検索することができます。<br>
+動物の種類を検索する場合はpetを選択、餌の種類を検索する場合はpostを選択する。<br>
 管理者側の場合、会員を退会させたり、不適切な投稿,コメントを削除することができます。
 
 ## 設計書
 テーブル定義書
 https://docs.google.com/spreadsheets/d/1A547iJ_TOecifi7Bg7G4rWEI1nDWzc4Lb3fyOARCDm4/edit#gid=0<br>
-ER図
+ER図<br>
 https://drive.google.com/file/d/1IQbQI8twh7atUB_U3W580nrGMIpG37WD/view?usp=sharing
 
 ## 機能一覧
@@ -51,7 +55,7 @@ https://drive.google.com/file/d/1IQbQI8twh7atUB_U3W580nrGMIpG37WD/view?usp=shari
 #### 管理者側の機能
 ・ユーザー管理機能
 ・コメント管理機能
-・投稿完了機能
+・投稿管理機能
 
 ## バージョン
 Rails 6.1.7 ruby 3.1.2
@@ -60,7 +64,8 @@ Rails 6.1.7 ruby 3.1.2
 $ cd animal_weight<br>
 $ rails db:migrate<br>
 $ rails db:seed<br>
-$ bundle install
+$ bundle install<br>
+$ yarn add chartkick chart.js
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -70,5 +75,7 @@ $ bundle install
 - IDE：Cloud9
 
 ## 使用素材
-- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
-- 使用しない場合は、使用素材の項目をREADMEから削除してください。
+ロゴデザイン<br>
+https://ja.wix.com/logo/maker<br>
+画像<br>
+https://www.photo-ac.com/
