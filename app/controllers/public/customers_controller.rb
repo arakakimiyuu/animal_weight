@@ -16,9 +16,9 @@ class Public::CustomersController < ApplicationController
     #ソート機能
     if params[:latest]
     #orderデータの取り出し
-     @posts = Post.where(customer_id: @customer.id).page(params[:page]).per(20).order(created_at: :DESC) #desc・・・昇順
+     @posts = Post.where(customer_id: @customer.id).page(params[:page]).per(20).order(date: :DESC) #desc・・・昇順
     elsif params[:old]
-     @posts = Post.where(customer_id: @customer.id).page(params[:page]).per(20).order(created_at: :ASC) #asc・・・降順
+     @posts = Post.where(customer_id: @customer.id).page(params[:page]).per(20).order(date: :ASC) #asc・・・降順
     else
      @posts = Post.where(customer_id: @customer.id).page(params[:page]).per(20)
     end

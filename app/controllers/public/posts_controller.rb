@@ -17,9 +17,9 @@ class Public::PostsController < ApplicationController
     #ソート機能
     if params[:latest]
     #orderデータの取り出し
-     @posts = Post.page(params[:page]).per(20).order(created_at: :DESC) #desc・・・昇順
+     @posts = Post.page(params[:page]).per(20).order(date: :DESC) #desc・・・昇順
     elsif params[:old]
-     @posts = Post.page(params[:page]).per(20).order(created_at: :ASC) #asc・・・降順
+     @posts = Post.page(params[:page]).per(20).order(date: :ASC) #asc・・・降順
     else
      @posts = Post.all.page(params[:page]).per(20)
     end
