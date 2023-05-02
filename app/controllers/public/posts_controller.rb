@@ -39,6 +39,7 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @pet = @post.pet
 
     #グラフ化用の変数
     @posts = Post.where(pet_id: @post.pet.id)

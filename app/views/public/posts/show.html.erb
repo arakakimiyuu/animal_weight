@@ -17,7 +17,7 @@
       </tr>
       <tr>
        <td>ペット名</td>
-       <td><%= @post.pet.pet_name %></td>
+       <td><%= link_to @post.pet.pet_name, pet_path(@pet.id) %></td>
       </tr>
       <tr>
        <td>動物の種類</td>
