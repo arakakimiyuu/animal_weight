@@ -20,7 +20,7 @@
             <%= f.text_field :color, class: "form-control", placeholder: "例) 白" %>
             <%= f.label :生年月日 %><br>
             <%= f.date_select :birth_date, {use_month_numbers: true, start_year: 1930, #入力値の開始位置
-                end_year: (Time.now.year - 0), #入力値の終了位置（現在から１０年前に指定）
+                end_year: (Time.now.year - 0), #入力値の終了位置（現在から０年前に指定）
                 default: Date.new(2001, 1, 1)} %><br> <%#デフォルトで表示されている値 %>
             <%= f.label :性別 %><br>
             <%= f.collection_radio_buttons :gender, Pet.genders_i18n, :first, :last %><br>  <%# {"male"=>"オス", "female"=>"メス", "unknown"=>"不明 %>
